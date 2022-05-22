@@ -1,4 +1,6 @@
-
+import Header from "./Components/Header"
+import Main from "./Components/Main"
+import Footer from "./Components/Footer"
 export default function App(){
     //get the data
     
@@ -7,7 +9,11 @@ export default function App(){
         .then(data => console.log(data))
         .catch(err => console.log(`error ${err}`));  
     
-      return(
-        <h1>Test</h1>
-    )
+        return(
+            <>
+                <Header />
+                <Main />
+                <Footer />
+            </>
+        )
 }
