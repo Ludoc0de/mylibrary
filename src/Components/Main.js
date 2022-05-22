@@ -1,10 +1,15 @@
 
 export default function Main(){
+    function handleClick(){
+        console.log("got it")
+    }
+
     return(
         <main>
-            <form>
+            <div>
                 <input type="text" />
-            </form>
+                <button onClick={handleClick}>Get the book with ISBN</button>
+            </div>
         </main>
     )
 }
