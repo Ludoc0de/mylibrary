@@ -1,14 +1,19 @@
+import React from "react"
 
 export default function Main(){
+    const[button, setButton]=React.useState(true)
+
     function handleClick(){
-        console.log("got it")
+        setButton(prevState => !prevState)
     }
 
     return(
         <main>
             <div>
                 <input type="text" />
-                <button onClick={handleClick}>Get the book with ISBN</button>
+                <button onClick={handleClick}>
+                    {button ? "wait ISBN number" : "here your book"}
+                </button>
             </div>
         </main>
     )
