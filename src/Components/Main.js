@@ -8,11 +8,10 @@ export default function Main(){
 
     function handleChange(event){
         const {name, value}= event.target
-        setIsbn(prevState =>{
-            return {
+        setIsbn(prevState => ({
                 ...prevState,
-                [name]:value}
-        })
+                [name]:value
+        }))
     }
 
     function handleClick(){
@@ -21,14 +20,13 @@ export default function Main(){
 
     function handleSubmit(event){
         event.preventDefault()
-        console.log(isbn)
     }
 
     return(
         <main>
             <form onSubmit={handleSubmit}>
                 <input 
-                    type="text" 
+                    type="number" 
                     name="searchBook"
                     placeholder="search your book"
                     value={isbn.searchBook}
@@ -39,6 +37,7 @@ export default function Main(){
                     {button ? "wait ISBN number" : "here your book"}
                 </button>
             </form>
+            <h2>{isbn.searchBook}</h2>
         </main>
     )
 }
