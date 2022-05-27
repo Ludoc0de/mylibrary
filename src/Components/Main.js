@@ -6,11 +6,6 @@ export default function Main(){
         searchBook:''
     })
 
-    console.log(isbn)
-    function handleClick(){
-        setButton(prevState => !prevState)
-    }
-
     function handleChange(event){
         const {name, value}= event.target
         setIsbn(prevState =>{
@@ -20,23 +15,30 @@ export default function Main(){
         })
     }
 
+    function handleClick(){
+        setButton(prevState => !prevState)
+    }
+
+    function handleSubmit(event){
+        event.preventDefault()
+        console.log(isbn)
+    }
+
     return(
         <main>
-            <div>
-                <form>
-                    <input 
-                        type="text" 
-                        name="searchBook"
-                        placeholder="search your book"
-                        value={isbn.searchBook}
-                        onChange={handleChange}
-                    />
+            <form onSubmit={handleSubmit}>
+                <input 
+                    type="text" 
+                    name="searchBook"
+                    placeholder="search your book"
+                    value={isbn.searchBook}
+                    onChange={handleChange}
+                />
 
-                    <button onClick={handleClick}>
-                        {button ? "wait ISBN number" : "here your book"}
-                    </button>
-                </form>
-            </div>
+                <button onClick={handleClick}>
+                    {button ? "wait ISBN number" : "here your book"}
+                </button>
+            </form>
         </main>
     )
 }
