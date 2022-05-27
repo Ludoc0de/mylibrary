@@ -2,29 +2,40 @@ import React from "react"
 
 export default function Main(){
     const[button, setButton]=React.useState(true)
+    const[isbn, setIsbn]=React.useState({
+        searchBook:''
+    })
 
+    console.log(isbn)
     function handleClick(){
         setButton(prevState => !prevState)
     }
 
-    function handleChange(){
-        console.log('yes')
+    function handleChange(event){
+        const {name, value}= event.target
+        setIsbn(prevState =>{
+            return {
+                ...prevState,
+                [name]:value}
+        })
     }
 
     return(
         <main>
             <div>
-                <input 
-                    type="text" 
-                    name="isbn"
-                    placeholder="sear your book"
-                    value={isbn.search}
-                    onChange={handleChange}
-                />
+                <form>
+                    <input 
+                        type="text" 
+                        name="searchBook"
+                        placeholder="search your book"
+                        value={isbn.searchBook}
+                        onChange={handleChange}
+                    />
 
-                <button onClick={handleClick}>
-                    {button ? "wait ISBN number" : "here your book"}
-                </button>
+                    <button onClick={handleClick}>
+                        {button ? "wait ISBN number" : "here your book"}
+                    </button>
+                </form>
             </div>
         </main>
     )
