@@ -3,8 +3,7 @@ import React, { useEffect } from "react"
 export default function Main(){
     const[button, setButton]=React.useState(true)
     const[isbn, setIsbn]=React.useState({
-        searchBook:'',
-        title:''
+        searchBook:''
     })
 
     const [book, setBook]= React.useState([])
@@ -40,7 +39,15 @@ export default function Main(){
     },[book])
 
     function getBookData() {
-        const title = book.title        
+        const title = book.title
+        const authorName = author.name
+        const name = author.author
+        const langue = book.languages[0].key
+        const pages = book.number_of_pages
+        const publish = book.publish_date
+        const format = book.physical_format
+        const editor = book.publishers[0]   
+        console.log(title, authorName, name, langue, pages, publish, format, editor)      
     }
 
     function handleClick(){
@@ -66,7 +73,7 @@ export default function Main(){
                     {button ? "wait ISBN number" : "here your book"}
                 </button>
             </form>
-            <h2>{isbn.title}, {isbn.author}</h2>
+            <h2>{book.title}, {book.author}</h2>
         </main>
     )
 }
