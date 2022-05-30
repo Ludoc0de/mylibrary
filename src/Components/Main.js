@@ -3,7 +3,18 @@ import React, { useEffect } from "react"
 export default function Main(){
     const[button, setButton]=React.useState(true)
     const[isbn, setIsbn]=React.useState({
+<<<<<<< HEAD
         searchBook:''
+=======
+        searchBook:'',
+        author:'',
+        title:'',
+        langue:'',
+        pages:'',
+        publish:'',
+        format:'',
+        editor:'',
+>>>>>>> 42b4fa980bb0bc3a0a3ac1773a8ef40c7806ef3a
     })
 
     const [book, setBook]= React.useState([])
