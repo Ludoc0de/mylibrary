@@ -4,7 +4,13 @@ export default function Main(){
     const[button, setButton]=React.useState(true)
     const[isbn, setIsbn]=React.useState({
         searchBook:'',
-        title:''
+        author:'',
+        title:'',
+        langue:'',
+        pages:'',
+        publish:'',
+        format:'',
+        editor:'',
     })
 
     const [book, setBook]= React.useState([])
