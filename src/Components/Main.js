@@ -8,6 +8,7 @@ export default function Main(){
     })
 
     const [book, setBook]= React.useState([])
+    const [author, setAuthor]= React.useState([])
 
     function handleChange(event){
         const {name, value}= event.target
@@ -20,20 +21,26 @@ export default function Main(){
     useEffect(() => {
         async function getBook(){
             const res = await fetch(`https://openlibrary.org/isbn/${isbn.searchBook}.json`)
-            const data = await res.json()
-            console.log(data)
-            setBook(data)
+            const dataBook = await res.json()
+            console.log(dataBook)
+            setBook(dataBook)
         }
         getBook()
     }, [isbn])
 
-    //
-    // add another useEffect for author, fetch link above. 
+    useEffect(() => {
+        async function getAuthor(){
+            const authors = book.authors[0].key
+            const res = await fetch(`https://openlibrary.org${authors}.json`)
+            const dataAuthor = await res.json()
+            console.log(dataAuthor)
+            setAuthor(dataAuthor)
+        }
+        getAuthor()
+    },[book])
+
     function getBookData() {
-        const authors = book.authors[0].key
-        console.log(`https://openlibrary.org/${authors}.json`)
-        const title = book.title
-        
+        const title = book.title        
     }
 
     function handleClick(){
@@ -59,7 +66,7 @@ export default function Main(){
                     {button ? "wait ISBN number" : "here your book"}
                 </button>
             </form>
-            <h2>{isbn.searchBook}</h2>
+            <h2>{isbn.title}, {isbn.author}</h2>
         </main>
     )
 }
