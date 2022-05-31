@@ -73,7 +73,7 @@ export default function Main(){
                     {button ? "wait ISBN number" : "here your book"}
                 </button>
             </form>
-            <h2>{book.title}, {book.author}</h2>
+            <h2>{book.title} {author.name}</h2>
         </main>
     )
 }
