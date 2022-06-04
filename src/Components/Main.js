@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 
 export default function Main(){
-    const[button, setButton]=React.useState(true)
+    const[button, setButton]=React.useState(false)
     const[isbn, setIsbn]=React.useState({
         searchBook:''
     })
@@ -15,6 +15,10 @@ export default function Main(){
                 ...prevState,
                 [name]:value
         }))
+    }
+
+    function handleClick(event){
+        setButton(prevState => !prevState)
     }
 
     useEffect(() => {
@@ -38,22 +42,6 @@ export default function Main(){
         getAuthor()
     },[book])
 
-    function getBookData() {
-        const title = book.title
-        const authorName = author.name
-        const name = author.author
-        const langue = book.languages[0].key
-        const pages = book.number_of_pages
-        const publish = book.publish_date
-        const format = book.physical_format
-        const editor = book.publishers[0]   
-        console.log(title, authorName, name, langue, pages, publish, format, editor)      
-    }
-
-    function handleClick(){
-        setButton(prevState => !prevState)
-    }
-
     function handleSubmit(event){
         event.preventDefault()
     }
@@ -69,13 +57,23 @@ export default function Main(){
                     onChange={handleChange}
                 />
 
-                <button onClick={handleClick, getBookData}>
+                <button onClick={handleClick}>
                     {button ? "wait ISBN number" : "here your book"}
                 </button>
             </form>
-            <h2>{book.title} {author.name}</h2>
+            {button && 
+                <section>
+                    <h2>{author.name}</h2>
+                    <h3>{book.title}</h3>
+                    {/* <h3>true ? {book.languages[0].key} : null</h3> */}
+                    {/* {author.author} */}
+                    {/* {book.languages[0].key} */}
+                    <p>Pages: {book.number_of_pages}</p>
+                    <p>{book.publish_date}</p>
+                    <p>{book.physical_format}</p>
+                    <p>{book.publishers[0]} </p>
+                </section>
+            }
         </main>
     )
 }
-
-//test
