@@ -1,4 +1,5 @@
 import React, { useEffect } from "react"
+import Book from "./Book"
 
 export default function Main(){
     const[button, setButton]=React.useState(false)
@@ -25,7 +26,6 @@ export default function Main(){
         async function getBook(){
             const res = await fetch(`https://openlibrary.org/isbn/${isbn.searchBook}.json`)
             const dataBook = await res.json()
-            console.log(dataBook)
             setBook(dataBook)
         }
         getBook()
@@ -36,7 +36,7 @@ export default function Main(){
             const authors = book.authors[0].key
             const res = await fetch(`https://openlibrary.org${authors}.json`)
             const dataAuthor = await res.json()
-            console.log(dataAuthor)
+            //console.log(dataAuthor)
             setAuthor(dataAuthor)
         }
         getAuthor()
@@ -61,18 +61,17 @@ export default function Main(){
                     {button ? "wait ISBN number" : "here your book"}
                 </button>
             </form>
-            {button && 
-                <section>
-                    <h2>{author.name}</h2>
-                    <h3>{book.title}</h3>
-                    {/* <h3>true ? {book.languages[0].key} : null</h3> */}
-                    {/* {author.author} */}
-                    {/* {book.languages[0].key} */}
-                    <p>Pages: {book.number_of_pages}</p>
-                    <p>{book.publish_date}</p>
-                    <p>{book.physical_format}</p>
-                    <p>{book.publishers[0]} </p>
-                </section>
+            {
+                button && 
+                    <Book 
+                        author={author.name} 
+                        title={book.title}
+                        //languages={book.languages[0].key}
+                        pages={book.number_of_pages}
+                        publish_date={book.publish_date}
+                        format={book.physical_format}
+                        publisher={book.publishers[0]}
+                    />
             }
         </main>
     )
