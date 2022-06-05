@@ -1,12 +1,14 @@
 import React from 'react'
 
 export default function Book(props){
+    const [bookId, setBookId]=React.useState(0)
 
     function handleClick(){
+        setBookId(prevId => prevId + 1)
         const books = JSON.parse(localStorage.getItem("books") || "[]");
-        
+
         const book = {
-            id: 0,
+            id: bookId,
             name: "test"
         };
 
