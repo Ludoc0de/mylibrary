@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import AddBook from "./AddBook"
+import ViewBook from "./ViewBook"
 
 export default function Main(){
     const[button, setButton]=React.useState(false)
@@ -48,6 +49,7 @@ export default function Main(){
 
     return(
         <main>
+            <ViewBook/>
             <form onSubmit={handleSubmit}>
                 <input 
                     type="number" 
