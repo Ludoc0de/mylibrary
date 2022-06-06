@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Book(props){
+export default function AddBook(props){
     const [bookId, setBookId]=React.useState(0)
 
     function handleClick(){
@@ -9,7 +9,12 @@ export default function Book(props){
 
         const book = {
             id: bookId,
-            name: "test"
+            name: props.author,
+            title: props.title,
+            pages: props.pages,
+            publish_date: props.publish_date,
+            format: props.format,
+            publisher: props.publisher
         };
 
         books.push(book);
@@ -18,13 +23,13 @@ export default function Book(props){
 
     return (
         <section>
-            <h2>{props.author}</h2>
-            <h3>{props.title}</h3>
+            <h2>Author: {props.author}</h2>
+            <h3>Title: {props.title}</h3>
             {/* <p>{props.languages}</p> */}
-            <p>{props.pages}</p>
-            <p>{props.publish_date}</p>
-            <p>{props.format}</p>
-            <p>{props.publisher}</p>
+            <p>Pages: {props.pages}</p>
+            <p>Publish date: {props.publish_date}</p>
+            <p>Format: {props.format}</p>
+            <p>Editor: {props.publisher}</p>
             <button onClick={handleClick}>Add book</button>
         </section>
     )
