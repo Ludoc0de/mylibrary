@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import Book from "./Book"
+import AddBook from "./AddBook"
 
 export default function Main(){
     const[button, setButton]=React.useState(false)
@@ -63,7 +63,7 @@ export default function Main(){
             </form>
             {
                 button && 
-                    <Book 
+                    <AddBook 
                         author={author.name} 
                         title={book.title}
                         //languages={book.languages[0].key}
