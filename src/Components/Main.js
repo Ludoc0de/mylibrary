@@ -12,6 +12,19 @@ export default function Main(){
     const [book, setBook]= React.useState([])
     const [author, setAuthor]= React.useState([])
 
+    const viewAllBooks = viewBooks.map(allBooks => {
+        return(
+            <ViewBook
+                author={allBooks.name} 
+                title={allBooks.title}
+                pages={allBooks.pages}
+                publish_date={allBooks.publish_date}
+                format={allBooks.format}
+                publisher={allBooks.publisher}
+            />
+        )
+    })
+
     function handleChange(event){
         const {name, value}= event.target
         setIsbn(prevState => ({
@@ -55,6 +68,7 @@ export default function Main(){
 
     return(
         <main>
+            {viewAllBooks}
             <form onSubmit={handleSubmit}>
                 <input 
                     type="number" 
