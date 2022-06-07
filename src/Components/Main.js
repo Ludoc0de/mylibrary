@@ -8,6 +8,7 @@ export default function Main(){
         searchBook:''
     })
 
+    const [viewBooks, setViewBooks]= React.useState([])
     const [book, setBook]= React.useState([])
     const [author, setAuthor]= React.useState([])
 
@@ -37,11 +38,16 @@ export default function Main(){
             const authors = book.authors[0].key
             const res = await fetch(`https://openlibrary.org${authors}.json`)
             const dataAuthor = await res.json()
-            //console.log(dataAuthor)
             setAuthor(dataAuthor)
         }
         getAuthor()
     },[book])
+
+    useEffect(()=> {
+        const viewBooks = JSON.parse(localStorage.getItem("books"))
+        viewBooks && setViewBooks(viewBooks)
+        console.log(viewBooks)
+    }, [])
 
     function handleSubmit(event){
         event.preventDefault()
@@ -49,7 +55,6 @@ export default function Main(){
 
     return(
         <main>
-            <ViewBook/>
             <form onSubmit={handleSubmit}>
                 <input 
                     type="number" 
