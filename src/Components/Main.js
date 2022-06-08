@@ -75,7 +75,7 @@ export default function Main(){
                 <input 
                     type="number" 
                     name="searchBook"
-                    placeholder="search your book"
+                    placeholder="add isbn book"
                     value={isbn.searchBook}
                     onChange={handleChange}
                 />
