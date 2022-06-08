@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function AddBook(props){
     const [bookId, setBookId]=React.useState(0)
+    console.log(props)
 
     function handleClick(){
         setBookId(prevId => prevId + 1)

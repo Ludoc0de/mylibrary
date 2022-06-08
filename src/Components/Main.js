@@ -59,7 +59,6 @@ export default function Main(){
     useEffect(()=> {
         const viewBooks = JSON.parse(localStorage.getItem("books"))
         viewBooks && setViewBooks(viewBooks)
-        console.log(viewBooks)
     }, [])
 
     function handleSubmit(event){
