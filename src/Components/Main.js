@@ -8,23 +8,11 @@ export default function Main(){
         searchBook:''
     })
 
-    const [viewBooks, setViewBooks]= React.useState([])
     const [book, setBook]= React.useState([])
     const [author, setAuthor]= React.useState([])
+    const [viewBooks, setViewBooks]= React.useState([])
 
-    const viewAllBooks = viewBooks.map(allBooks => {
-        return(
-            <ViewBook
-                author={allBooks.name} 
-                title={allBooks.title}
-                pages={allBooks.pages}
-                publish_date={allBooks.publish_date}
-                format={allBooks.format}
-                publisher={allBooks.publisher}
-            />
-        )
-    })
-
+    //add isbn input 
     function handleChange(event){
         const {name, value}= event.target
         setIsbn(prevState => ({
@@ -37,13 +25,14 @@ export default function Main(){
         setButton(prevState => !prevState)
     }
 
+    //get bookdata with isbn
     useEffect(() => {
-        async function getBook(){
+        async function isbnGetBook(){
             const res = await fetch(`https://openlibrary.org/isbn/${isbn.searchBook}.json`)
             const dataBook = await res.json()
             setBook(dataBook)
         }
-        getBook()
+        isbnGetBook()
     }, [isbn])
 
     useEffect(() => {
@@ -55,6 +44,20 @@ export default function Main(){
         }
         getAuthor()
     },[book])
+    
+    //get all storage books
+    const viewAllBooks = viewBooks.map(getStorageBooks => {
+        return(
+            <ViewBook
+                author={getStorageBooks.name} 
+                title={getStorageBooks.title}
+                pages={getStorageBooks.pages}
+                publish_date={getStorageBooks.publish_date}
+                format={getStorageBooks.format}
+                publisher={getStorageBooks.publisher}
+            />
+        )
+    })
 
     useEffect(()=> {
         const viewBooks = JSON.parse(localStorage.getItem("books"))
