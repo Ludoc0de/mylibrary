@@ -1,8 +1,6 @@
 import React from "react"
 
 export default function ViewBook(props){
-    console.log(props)
-  
     return(
         <section>
             <h2>Author: {props.author}</h2>
