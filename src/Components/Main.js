@@ -11,6 +11,7 @@ export default function Main(){
     const [book, setBook]= React.useState([])
     const [author, setAuthor]= React.useState([])
     const [viewBooks, setViewBooks]= React.useState([])
+    const [bookId, setBookId]=React.useState(0)
 
     //add isbn input 
     function handleChange(event){
@@ -68,6 +69,25 @@ export default function Main(){
         event.preventDefault()
     }
 
+    function bookStorage(){
+        console.log("test")
+        setBookId(prevId => prevId + 1)
+        const books = JSON.parse(localStorage.getItem("books") || "[]");
+
+        const putBook = {
+            id: bookId,
+            name: author.name,
+            title: book.title,
+            pages: book.number_of_pages,
+            publish_date: book.publish_date,
+            format: book.physical_format,
+            publisher: book.publishers[0]
+        };
+
+        books.push(putBook);
+        localStorage.setItem("books", JSON.stringify(books));
+    }
+
     return(
         <main>
             {viewAllBooks}
@@ -81,21 +101,9 @@ export default function Main(){
                 />
 
                 <button onClick={handleClick}>
-                    {button ? "wait ISBN number" : "here your book"}
+                    {button ? "here your book" : "Add ISBN"}
                 </button>
             </form>
-            {
-                button && 
-                    <AddBook 
-                        author={author.name} 
-                        title={book.title}
-                        //languages={book.languages[0].key}
-                        pages={book.number_of_pages}
-                        publish_date={book.publish_date}
-                        format={book.physical_format}
-                        publisher={book.publishers[0]}
-                    />
-            }
         </main>
     )
 }
