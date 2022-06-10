@@ -82,6 +82,7 @@ export default function Main(){
 
         books.push(putBook);
         localStorage.setItem("books", JSON.stringify(books));
+        window.location.reload();
     }
 
     return(
