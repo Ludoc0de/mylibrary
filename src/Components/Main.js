@@ -22,10 +22,6 @@ export default function Main(){
         }))
     }
 
-    function handleClick(event){
-        setButton(prevState => !prevState)
-    }
-
     //get bookdata with isbn
     useEffect(() => {
         async function isbnGetBook(){
@@ -100,8 +96,8 @@ export default function Main(){
                     onChange={handleChange}
                 />
 
-                <button onClick={handleClick}>
-                    {button ? "here your book" : "Add ISBN"}
+                <button onClick={bookStorage}>
+                    Add book
                 </button>
             </form>
         </main>
