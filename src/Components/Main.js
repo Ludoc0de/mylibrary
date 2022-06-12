@@ -75,6 +75,8 @@ export default function Main(){
                     onChange={handleChange}
                 />
                 <AddBook 
+                    key={book.id}
+                    id={book.id}
                     author={author.name} 
                     title={book.title}
                     //languages={book.languages[0].key}
