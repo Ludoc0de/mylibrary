@@ -3,7 +3,6 @@ import AddBook from "./AddBook"
 import ViewBook from "./ViewBook"
 
 export default function Main(){
-    const[button, setButton]=React.useState(false)
     const[isbn, setIsbn]=React.useState({
         searchBook:''
     })
@@ -11,7 +10,6 @@ export default function Main(){
     const [book, setBook]= React.useState([])
     const [author, setAuthor]= React.useState([])
     const [viewBooks, setViewBooks]= React.useState([])
-    const [bookId, setBookId]=React.useState(0)
 
     //add isbn input 
     function handleChange(event){
@@ -65,26 +63,6 @@ export default function Main(){
         event.preventDefault()
     }
 
-    function bookStorage(){
-        console.log("test")
-        setBookId(prevId => prevId + 1)
-        const books = JSON.parse(localStorage.getItem("books") || "[]");
-
-        const putBook = {
-            id: bookId,
-            name: author.name,
-            title: book.title,
-            pages: book.number_of_pages,
-            publish_date: book.publish_date,
-            format: book.physical_format,
-            publisher: book.publishers[0]
-        };
-
-        books.push(putBook);
-        localStorage.setItem("books", JSON.stringify(books));
-        window.location.reload();
-    }
-
     return(
         <main>
             {viewAllBooks}
@@ -96,10 +74,17 @@ export default function Main(){
                     value={isbn.searchBook}
                     onChange={handleChange}
                 />
-
-                <button onClick={bookStorage}>
-                    Add book
-                </button>
+                <AddBook 
+                    key={book.id}
+                    id={book.id}
+                    author={author.name} 
+                    title={book.title}
+                    //languages={book.languages[0].key}
+                    pages={book.number_of_pages}
+                    publish_date={book.publish_date}
+                    format={book.physical_format}
+                    publisher={book.publishers}
+                />
             </form>
         </main>
     )
