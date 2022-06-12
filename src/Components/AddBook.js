@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function AddBook(props){
-    const [bookId, setBookId]=React.useState(0)
+    const setId = "count";
+    const [bookId, setBookId]=React.useState(()=>{
+        const idValue = localStorage.getItem(setId)
+        return idValue === null ? 0: JSON.parse(idValue) 
+    })
+
+    useEffect(()=> {
+        localStorage.setItem(setId, JSON.stringify(bookId))
+    }, [bookId])
+    console.log(bookId)
 
     function bookStorage(){
-        console.log("test")
-        setBookId(prevId => prevId + 1)
+        setBookId(prevState => prevState + 1)
         const books = JSON.parse(localStorage.getItem("books") || "[]");
-
         const putBook = {
             id: bookId,
             name: props.author,
