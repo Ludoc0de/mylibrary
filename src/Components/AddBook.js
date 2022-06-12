@@ -7,8 +7,6 @@ export default function AddBook(props){
         return idValue === null ? 0: JSON.parse(idValue) 
     })
 
-    console.log(localStorage.key(bookId))
-
     useEffect(()=> {
         localStorage.setItem(setId, JSON.stringify(bookId))
     }, [bookId])
