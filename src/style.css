@@ -50,13 +50,18 @@ nav {
 }
 
 .form__input {
-    background-color: var(--grey-color);
     border: none;
     border-radius: 1em;
     height: 2.2em;
-    width: 15em;
+    width: 20em;
     padding-left: 1em;
-    margin-right: 1em;
+    position:relative;
+    left: 5em;
+}
+
+.form__input_color {
+    background-color: var(--grey-color);
+    /* color: var(--grey-color); */
 }
 
 /*remove input arrow */
@@ -70,4 +75,16 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+.form__button {
+    border: none;
+    border-radius: 0 1em 1em 0;
+    height: 2.2em;
+    width: 5em;
+}
+
+.form__button_color {
+    background-color: var(--blue-color);
+    color: var(--grey-color);
 }
