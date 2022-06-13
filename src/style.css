@@ -32,10 +32,11 @@ img{
 body {
     background-color: var(--white-color);
     color: var(--black-color);
+    font-family: 'Roboto', sans-serif;
 }
 
 h1,
 h2,
 h3 {
-    font-family: 'Open sans';
+        font-family: 'Open Sans', sans-serif;
 }
