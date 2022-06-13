@@ -9,6 +9,7 @@ export default function ViewBook(props){
         let index = booksArray.findIndex(bookIndex => bookIndex === id)
         books.splice(index, 1);
         localStorage.setItem("books", JSON.stringify(books))
+        window.location.reload();
     }
 
     return(
