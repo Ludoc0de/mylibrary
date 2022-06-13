@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import AddBook from "./AddBook"
+//import AddBook from "./AddBook"
 import ViewBook from "./ViewBook"
 
 export default function Main(){
@@ -7,38 +7,38 @@ export default function Main(){
         searchBook:''
     })
 
-    const [book, setBook]= React.useState([])
-    const [author, setAuthor]= React.useState([])
+    //const [book, setBook]= React.useState([])
+    //const [author, setAuthor]= React.useState([])
     const [viewBooks, setViewBooks]= React.useState([])
 
     //add isbn input 
-    function handleChange(event){
-        const {name, value}= event.target
-        setIsbn(prevState => ({
-                ...prevState,
-                [name]:value
-        }))
-    }
+    // function handleChange(event){
+    //     const {name, value}= event.target
+    //     setIsbn(prevState => ({
+    //             ...prevState,
+    //             [name]:value
+    //     }))
+    // }
 
     //get bookdata with isbn
-    useEffect(() => {
-        async function isbnGetBook(){
-            const res = await fetch(`https://openlibrary.org/isbn/${isbn.searchBook}.json`)
-            const dataBook = await res.json()
-            setBook(dataBook)
-        }
-        isbnGetBook()
-    }, [isbn])
+    // useEffect(() => {
+    //     async function isbnGetBook(){
+    //         const res = await fetch(`https://openlibrary.org/isbn/${isbn.searchBook}.json`)
+    //         const dataBook = await res.json()
+    //         setBook(dataBook)
+    //     }
+    //     isbnGetBook()
+    // }, [isbn])
 
-    useEffect(() => {
-        async function getAuthor(){
-            const authors = book.authors[0].key
-            const res = await fetch(`https://openlibrary.org${authors}.json`)
-            const dataAuthor = await res.json()
-            setAuthor(dataAuthor)
-        }
-        getAuthor()
-    },[book])
+    // useEffect(() => {
+    //     async function getAuthor(){
+    //         const authors = book.authors[0].key
+    //         const res = await fetch(`https://openlibrary.org${authors}.json`)
+    //         const dataAuthor = await res.json()
+    //         setAuthor(dataAuthor)
+    //     }
+    //     getAuthor()
+    // },[book])
     
     //get all storage books
     const viewAllBooks = viewBooks.map(getStorageBooks => {
@@ -61,14 +61,14 @@ export default function Main(){
         viewBooks && setViewBooks(viewBooks)
     }, [])
 
-    function handleSubmit(event){
-        event.preventDefault()
-    }
+    // function handleSubmit(event){
+    //     event.preventDefault()
+    // }
 
     return(
         <main>
             {viewAllBooks}
-            <form onSubmit={handleSubmit}>
+            {/* <form onSubmit={handleSubmit}>
                 <input 
                     type="number" 
                     name="searchBook"
@@ -87,7 +87,7 @@ export default function Main(){
                     format={book.physical_format}
                     publisher={book.publishers}
                 />
-            </form>
+            </form> */}
         </main>
     )
 }
