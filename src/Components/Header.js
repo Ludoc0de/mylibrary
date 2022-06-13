@@ -44,9 +44,10 @@ export default function Header(){
 
     return(
         <nav>
-            <h2>My books</h2>
+            <h1>My books</h1>
             <form onSubmit={handleSubmit}>
                 <input 
+                    className="form__input form__input_color"
                     type="number" 
                     name="searchBook"
                     placeholder="add isbn book"
