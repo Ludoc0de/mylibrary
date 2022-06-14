@@ -44,7 +44,7 @@ export default function Header(){
 
     return(
         <nav>
-            <h1>My books</h1>
+            <h1 className="nav__title" >My books</h1>
             <form onSubmit={handleSubmit}>
                 <input 
                     className="form__input form__input_color"

@@ -67,6 +67,7 @@ export default function Main(){
 
     return(
         <main>
+            <h2 className="main__title">My books</h2>
             {viewAllBooks}
             {/* <form onSubmit={handleSubmit}>
                 <input 
