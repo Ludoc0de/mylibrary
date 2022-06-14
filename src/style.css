@@ -42,11 +42,17 @@ h3 {
 }
 
 /* HEADER */
-nav {
+header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1em 0;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
 }
 
 .form__input {
@@ -87,4 +93,70 @@ input[type=number] {
 .form__button_color {
     background-color: var(--blue-color);
     color: var(--grey-color);
+}
+
+/*main*/
+
+main {
+    
+}
+
+.main__title {
+   
+}
+
+.main__section {
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    background-color: var(--white-color);
+    box-shadow: 0.1em 0.1em 1em #2D272C;
+    border-radius: 0.5em;
+    width: 36em;
+    height: 14em;
+    margin-bottom: 2em;
+}
+
+.section__img{
+    background-color: blue;
+    border-radius: 0.5em;
+    width: 8em;
+    height: 12em;
+}
+
+.info__ul {
+    display: flex;
+    text-align: center;
+    width: 25em;
+    list-style: none;
+    padding: 0;
+}
+
+.section__button {
+    position:relative;
+    left: 22em;
+    border: none;
+    background: none;
+
+    cursor: pointer; 
+}
+
+/* .section__button:hover {
+    position: relative;
+    left: 20em;
+    height: 2em;
+    width: 10em;
+} */
+
+.svg__bookmark {
+    /* position: relative;
+    left: 0em; */
+}
+
+.svg__path:hover .svg__text{
+    transform: scaleX(2);
+}
+
+.svg__path:hover {
+    fill: transparent;
 }
