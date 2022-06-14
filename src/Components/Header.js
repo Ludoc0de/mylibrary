@@ -43,8 +43,11 @@ export default function Header(){
     }
 
     return(
-        <nav>
-            <h1 className="nav__title" >My books</h1>
+        <header>
+            <nav>
+                <h1 className="nav__title" >My Library</h1>
+                <a>Get started</a>
+            </nav>
             <form onSubmit={handleSubmit}>
                 <input 
                     className="form__input form__input_color"
@@ -66,6 +69,6 @@ export default function Header(){
                     publisher={book.publishers}
                 />
             </form>
-        </nav>
+        </header>
     )
 }
