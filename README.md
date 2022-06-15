@@ -14,5 +14,6 @@ When a user adds a book with their ISBN numbers, they add their book with the in
 He can see his collection and delete his books.
 The objective of this project was to be able to use REACTJS, review the Props, Maping Data, State, Eventlistener, Form etc..
 
-#Optimizations
+# Optimizations
+
 Add image covers, find books by title or author.
