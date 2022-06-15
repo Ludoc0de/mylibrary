@@ -101,13 +101,9 @@ input[type=number] {
 }
 
 /*main*/
-
-main {
-    
-}
-
-.main__title {
-   
+.main__container-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .main__section {
