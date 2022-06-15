@@ -13,17 +13,22 @@ export default function ViewBook(props){
     }
 
     return(
-        <section>
-            <h2>Author: {props.author}</h2>
-            <h3>Title: {props.title}</h3>
-            <p>Pages: {props.pages}</p>
-            <p>Publish date: {props.publish_date}</p>
-            <p>Format: {props.format}</p>
-            <p>Editor: {props.publisher}</p>
-            <DeleteBook 
-                id={props.id}
-                deleteBook={deleteBook}
-            />
+        <section className="main__section">
+            <img className="section__img"/>
+            <div className="section__info">
+                <h2>{props.title}</h2>
+                <h3>{props.author}</h3>
+                <ul className="info__ul">
+                    <li>{props.pages} Pages</li>
+                    <li>{props.publish_date} Publish date</li>
+                    <li>{props.format} Format</li>
+                    <li>{props.publisher} Editor</li>
+                </ul>
+                <DeleteBook 
+                    id={props.id}
+                    deleteBook={deleteBook}
+                />
+            </div>
         </section>
     )
 }

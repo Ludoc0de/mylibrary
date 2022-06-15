@@ -30,7 +30,10 @@ export default function AddBook(props){
     }
 
     return (
-        <button onClick={bookStorage}>
+        <button 
+            className="form__button form__button_color"
+            onClick={bookStorage}
+        >
             Add book
         </button>
     )
