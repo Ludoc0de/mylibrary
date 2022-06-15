@@ -3,9 +3,9 @@ import React, { useEffect } from "react"
 import ViewBook from "./ViewBook"
 
 export default function Main(){
-    const[isbn, setIsbn]=React.useState({
-        searchBook:''
-    })
+    // const[isbn, setIsbn]=React.useState({
+    //     searchBook:''
+    // })
 
     //const [book, setBook]= React.useState([])
     //const [author, setAuthor]= React.useState([])
