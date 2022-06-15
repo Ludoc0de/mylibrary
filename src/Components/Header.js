@@ -45,7 +45,7 @@ export default function Header(){
     return(
         <header>
             <nav>
-                <h1 className="nav__title" >My Library</h1>
+                <h1 className="nav__title" >My library</h1>
                 <a>Get started</a>
             </nav>
             <form onSubmit={handleSubmit}>
