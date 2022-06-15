@@ -118,7 +118,7 @@ main {
 }
 
 .section__img{
-    background-color: blue;
+    background-color: var(--blue-color);
     border-radius: 0.5em;
     width: 8em;
     height: 12em;
