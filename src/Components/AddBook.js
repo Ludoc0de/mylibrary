@@ -20,7 +20,6 @@ export default function AddBook(props){
             title: props.title,
             pages: props.pages,
             publish_date: props.publish_date,
-            format: props.format,
             publisher: props.publisher[0]
         };
 
