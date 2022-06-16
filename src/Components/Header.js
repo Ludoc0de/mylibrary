@@ -7,8 +7,9 @@ export default function Header(){
     })
 
     const [book, setBook]= React.useState([]) 
-    const [img, setImg]= React.useState([])
-    
+    //const [img, setImg]= React.useState([])
+
+    //get search input 
     function handleChange(event){
         const {name, value}= event.target
         setSearch(prevState => {
@@ -18,6 +19,7 @@ export default function Header(){
         })
     }
 
+    //get bookdata with search
     async function searchGetBook(){
             try{
                 const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
@@ -35,22 +37,12 @@ export default function Header(){
     useEffect(() => {
         searchGetBook()
     }, [search])
-    
-    // async function getAuthor(){
-    //     try{
-    //         const img = book.authors[0].key
-    //         const res = await fetch(`https://openlibrary.org${authors}.json`)
-    //         const dataAuthor = await res.json()
-    //         setAuthor(dataAuthor)
-    //     }
-    //     catch(error){
-    //         console.log(`error ${error}`)
-    //     }
-    // }
 
-    // useEffect(() => {
-    //     getImg()
-    // },[book])
+    //get img from bookdata
+    // function getImg(){
+    //      const imgKey = book.cover_edition_key
+    //      const img = `https://covers.openlibrary.org/b/olid/${imgKey}.jpg`
+    // }
 
     function handleSubmit(event){
         event.preventDefault()
