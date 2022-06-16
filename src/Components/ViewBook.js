@@ -2,7 +2,6 @@ import React from "react"
 import DeleteBook from "./DeleteBook"
 
 export default function ViewBook(props){
-   console.log(props)
     function deleteBook(id){
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         let booksArray = books.map(array => array.id)
