@@ -50,7 +50,6 @@ export default function Main(){
                 title={getStorageBooks.title}
                 pages={getStorageBooks.pages}
                 publish_date={getStorageBooks.publish_date}
-                format={getStorageBooks.format}
                 publisher={getStorageBooks.publisher}
             />
         )
