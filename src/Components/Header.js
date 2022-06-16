@@ -2,42 +2,56 @@ import React, {useEffect} from "react"
 import AddBook from "./AddBook"
 
 export default function Header(){
-   const[isbn, setIsbn]=React.useState({
-        searchBook:''
+    const[search, setSearch]=React.useState({
+        searchBook:""
     })
 
-    const [book, setBook]= React.useState([])
-    const [author, setAuthor]= React.useState([])
-
-    //add isbn input 
+    const [book, setBook]= React.useState([]) 
+    const [img, setImg]= React.useState([])
+    
     function handleChange(event){
         const {name, value}= event.target
-        setIsbn(prevState => ({
-                ...prevState,
+        setSearch(prevState => {
+                return {...prevState,
                 [name]:value
-        }))
+            }
+        })
     }
 
-    //get bookdata with isbn
-    useEffect(() => {
-        async function isbnGetBook(){
-            const res = await fetch(`https://openlibrary.org/isbn/${isbn.searchBook}.json`)
-            const dataBook = await res.json()
-            setBook(dataBook)
+    async function searchGetBook(){
+            try{
+                const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
+                const dataBooks = await res.json()
+                const data = dataBooks.docs.shift(0)
+                if(data){
+                  setBook(data)  
+                }
+            }
+            catch(error){
+                console.log(`error ${error}`)
+            }
         }
-        isbnGetBook()
-    }, [isbn])
 
     useEffect(() => {
-        async function getAuthor(){
-            const authors = book.authors[0].key
-            const res = await fetch(`https://openlibrary.org${authors}.json`)
-            const dataAuthor = await res.json()
-            setAuthor(dataAuthor)
-        }
-        getAuthor()
-    },[book])
+        searchGetBook()
+    }, [search])
     
+    // async function getAuthor(){
+    //     try{
+    //         const img = book.authors[0].key
+    //         const res = await fetch(`https://openlibrary.org${authors}.json`)
+    //         const dataAuthor = await res.json()
+    //         setAuthor(dataAuthor)
+    //     }
+    //     catch(error){
+    //         console.log(`error ${error}`)
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     getImg()
+    // },[book])
+
     function handleSubmit(event){
         event.preventDefault()
     }
@@ -46,27 +60,27 @@ export default function Header(){
         <header>
             <nav>
                 <h1 className="nav__title" >My library</h1>
-                <a>Get started</a>
+                <a href="#">Get started</a>
             </nav>
             <form onSubmit={handleSubmit}>
                 <input 
                     className="form__input form__input_color"
-                    type="number" 
+                    type="text" 
                     name="searchBook"
-                    placeholder="add isbn book"
-                    value={isbn.searchBook}
+                    placeholder="search"
+                    value={search.searchBook}
                     onChange={handleChange}
                 />
                 <AddBook 
                     key={book.id}
                     id={book.id}
-                    author={author.name} 
                     title={book.title}
-                    //languages={book.languages[0].key}
-                    pages={book.number_of_pages}
-                    publish_date={book.publish_date}
-                    format={book.physical_format}
-                    publisher={book.publishers}
+                    author={book.author_name} 
+                    pages={book.number_of_pages_median}
+                    publish_date={book.first_publish_year}
+                    //synopsis={book.first_sentence}
+                    publisher={book.publisher}
+                    //cover={cover_edition_key}
                 />
             </form>
         </header>
