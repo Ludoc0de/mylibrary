@@ -5,24 +5,25 @@ export default function Header(){
     const[search, setSearch]=React.useState({
         searchBook:""
     })
-
+    console.log(search)
     const [book, setBook]= React.useState([]) 
     //const [img, setImg]= React.useState([])
-
+    console.log(book)
     //get search input 
     function handleChange(event){
-        const {name, value}= event.target
-        setSearch(prevState => {
-                return {...prevState,
-                [name]:value
-            }
-        })
+        setSearch(event.target.value)
+        // const {name, value}= event.target
+        // setSearch(prevState => {
+        //         return {...prevState,
+        //         [name]:value
+        //     }
+        // })
     }
 
     //get bookdata with search
     async function searchGetBook(){
             try{
-                const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
+                const res = await fetch(`http://openlibrary.org/search.json?q=${search}`)
                 const dataBooks = await res.json()
                 const data = dataBooks.docs.shift(0)
                 if(data){
@@ -53,6 +54,7 @@ export default function Header(){
             <nav>
                 <h1 className="nav__title" >My library</h1>
                 <a href="#">Get started</a>
+                {search}
             </nav>
             <form onSubmit={handleSubmit}>
                 <input 
