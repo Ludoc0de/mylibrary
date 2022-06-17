@@ -1,4 +1,5 @@
-import React, {useEffect} from "react"
+import React, {useCallback, useEffect} from "react"
+import debounce from "lodash.debounce"
 import AddBook from "./AddBook"
 
 export default function Header(){
@@ -9,9 +10,16 @@ export default function Header(){
     console.log(book)
     
     //get search input 
+
+    const debounceSave = useCallback(
+        debounce((nextValue) => setSaveValue(nextValue), 100),
+        []
+    )
+    
     function handleChange(event){
         const nextValue = event.target.value
         setSearch(nextValue)
+        debounceSave(nextValue)
         // const {name, value}= event.target
         // setSearch(prevState => {
         //         return {...prevState,
