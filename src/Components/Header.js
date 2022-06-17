@@ -10,7 +10,7 @@ export default function Header(){
     console.log(book)
     
     //get search from input value 
-    const debounceSave = useCallback(
+    const debounceSave = useCallback(()=>
         debounce((nextValue) => setSaveValue(nextValue), 1000),
         []
     )
@@ -22,7 +22,8 @@ export default function Header(){
     }
 
     //get bookdata with search
-    async function searchGetBook(){
+    useEffect(() => {
+        async function searchGetBook(){
             try{
                 const res = await fetch(`http://openlibrary.org/search.json?q=${saveValue}`)
                 const dataBooks = await res.json()
@@ -35,8 +36,6 @@ export default function Header(){
                 console.log(`error ${error}`)
             }
         }
-
-    useEffect(() => {
         searchGetBook()
     }, [saveValue])
 
