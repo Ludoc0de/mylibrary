@@ -6,12 +6,15 @@ export default function Header(){
         searchBook:""
     })
     console.log(search)
+    const[saveValue, setSaveValue]=React.useState("")
     const [book, setBook]= React.useState([]) 
     //const [img, setImg]= React.useState([])
     console.log(book)
+    
     //get search input 
     function handleChange(event){
-        setSearch(event.target.value)
+        const nextValue = event.target.value
+        setSearch(nextValue)
         // const {name, value}= event.target
         // setSearch(prevState => {
         //         return {...prevState,
