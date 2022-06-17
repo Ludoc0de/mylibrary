@@ -3,16 +3,15 @@ import debounce from "lodash.debounce"
 import AddBook from "./AddBook"
 
 export default function Header(){
-    const[search, setSearch]=React.useState("")
-    const[saveValue, setSaveValue]=React.useState("")
+    const [search, setSearch]=React.useState("")
+    const [saveValue, setSaveValue]=React.useState("")
     const [book, setBook]= React.useState([]) 
     //const [img, setImg]= React.useState([])
     console.log(book)
     
-    //get search input 
-
+    //get search from input value 
     const debounceSave = useCallback(
-        debounce((nextValue) => setSaveValue(nextValue), 100),
+        debounce((nextValue) => setSaveValue(nextValue), 1000),
         []
     )
     
@@ -20,18 +19,12 @@ export default function Header(){
         const nextValue = event.target.value
         setSearch(nextValue)
         debounceSave(nextValue)
-        // const {name, value}= event.target
-        // setSearch(prevState => {
-        //         return {...prevState,
-        //         [name]:value
-        //     }
-        // })
     }
 
     //get bookdata with search
     async function searchGetBook(){
             try{
-                const res = await fetch(`http://openlibrary.org/search.json?q=${search}`)
+                const res = await fetch(`http://openlibrary.org/search.json?q=${saveValue}`)
                 const dataBooks = await res.json()
                 const data = dataBooks.docs.shift(0)
                 if(data){
@@ -45,7 +38,7 @@ export default function Header(){
 
     useEffect(() => {
         searchGetBook()
-    }, [search])
+    }, [saveValue])
 
     //get img from bookdata
     // function getImg(){
