@@ -2,10 +2,7 @@ import React, {useEffect} from "react"
 import AddBook from "./AddBook"
 
 export default function Header(){
-    const[search, setSearch]=React.useState({
-        searchBook:""
-    })
-    console.log(search)
+    const[search, setSearch]=React.useState("")
     const[saveValue, setSaveValue]=React.useState("")
     const [book, setBook]= React.useState([]) 
     //const [img, setImg]= React.useState([])
@@ -60,12 +57,13 @@ export default function Header(){
                 {search}
             </nav>
             <form onSubmit={handleSubmit}>
+                {saveValue}
                 <input 
                     className="form__input form__input_color"
                     type="text" 
                     name="searchBook"
                     placeholder="search"
-                    value={search.searchBook}
+                    value={search}
                     onChange={handleChange}
                 />
                 <AddBook 
