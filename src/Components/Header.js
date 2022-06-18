@@ -10,8 +10,8 @@ export default function Header(){
     console.log(book)
     
     //get search from input value 
-    const debounceSave = useCallback(()=>
-        debounce((nextValue) => setSaveValue(nextValue), 1000),
+    const debounceSave = useCallback(
+        debounce((nextValue) => setSaveValue(nextValue), 500),
         []
     )
     
