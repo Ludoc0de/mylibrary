@@ -5,8 +5,9 @@ import AddBook from "./AddBook"
 export default function Header(){
     const [search, setSearch]=React.useState("")
     const [saveValue, setSaveValue]=React.useState("")
-    const [book, setBook]= React.useState([]) 
-
+    const [book, setBook]= React.useState([])
+    const [img, setImg]= React.useState([])
+    
     //get search from input value 
     const debounceSave = useCallback(
         debounce((nextValue) => setSaveValue(nextValue), 500),
