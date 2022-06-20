@@ -83,7 +83,7 @@ export default function Header(){
                     publish_date={book.first_publish_year}
                     //synopsis={book.first_sentence}
                     publisher={book.publisher}
-                    cover={book.cover_edition_key}
+                    cover={img}
                 />
             </form>
         </header>
