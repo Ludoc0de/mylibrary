@@ -9,13 +9,13 @@ export default function Main(){
     const viewAllBooks = viewBooks.map(getStorageBooks => {
         return(
             <ViewBook
-                key={getStorageBooks.id}
                 id={getStorageBooks.id}
                 author={getStorageBooks.name} 
                 title={getStorageBooks.title}
                 pages={getStorageBooks.pages}
                 publish_date={getStorageBooks.publish_date}
                 publisher={getStorageBooks.publisher}
+                cover={getStorageBooks.cover}
             />
         )
     })
