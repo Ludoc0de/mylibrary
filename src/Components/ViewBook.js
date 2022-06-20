@@ -13,7 +13,7 @@ export default function ViewBook(props){
 
     return(
         <section className="main__section">
-            <img className="section__img"/>
+            <img className="section__img" src={props.cover}/>
             <div className="section__info">
                 <h2>{props.title}</h2>
                 <h3>{props.author}</h3>
