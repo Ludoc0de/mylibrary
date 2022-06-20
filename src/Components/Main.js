@@ -9,6 +9,7 @@ export default function Main(){
     const viewAllBooks = viewBooks.map(getStorageBooks => {
         return(
             <ViewBook
+                key={getStorageBooks.id}
                 id={getStorageBooks.id}
                 author={getStorageBooks.name} 
                 title={getStorageBooks.title}
