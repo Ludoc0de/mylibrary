@@ -6,9 +6,7 @@ export default function Header(){
     const [search, setSearch]=React.useState("")
     const [saveValue, setSaveValue]=React.useState("")
     const [book, setBook]= React.useState([]) 
-    //const [img, setImg]= React.useState([])
-    console.log(book)
-    
+
     //get search from input value 
     const debounceSave = useCallback(
         debounce((nextValue) => setSaveValue(nextValue), 500),
@@ -38,12 +36,6 @@ export default function Header(){
         }
         searchGetBook()
     }, [saveValue])
-
-    //get img from bookdata
-    // function getImg(){
-    //      const imgKey = book.cover_edition_key
-    //      const img = `https://covers.openlibrary.org/b/olid/${imgKey}.jpg`
-    // }
 
     function handleSubmit(event){
         event.preventDefault()
@@ -75,7 +67,7 @@ export default function Header(){
                     publish_date={book.first_publish_year}
                     //synopsis={book.first_sentence}
                     publisher={book.publisher}
-                    //cover={cover_edition_key}
+                    cover={book.cover_edition_key}
                 />
             </form>
         </header>
