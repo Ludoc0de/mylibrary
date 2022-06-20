@@ -44,7 +44,7 @@ export default function Header(){
             try{
                 const res = await fetch(`https://covers.openlibrary.org/b/olid/${book.cover_edition_key}.jpg`)
                 const dataCover = await res.url
-                
+                dataCover.match(/\/OL/) && setImg(dataCover)
             }
             catch(error){
                 console.log(`error ${error}`)
