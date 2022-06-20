@@ -12,7 +12,7 @@ export default function AddBook(props){
     }, [bookId])
 
     function bookStorage(){
-        setBookId(prevState => prevState + 1)
+        setBookId(prevState => prevState + 1)      
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         const putBook = {
             id: bookId,
@@ -20,7 +20,8 @@ export default function AddBook(props){
             title: props.title,
             pages: props.pages,
             publish_date: props.publish_date,
-            publisher: props.publisher[0]
+            publisher: props.publisher[0],
+            cover: props.cover
         };
 
         books.push(putBook);
