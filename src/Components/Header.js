@@ -7,7 +7,7 @@ export default function Header(){
     const [saveValue, setSaveValue]=React.useState("")
     const [book, setBook]= React.useState([])
     const [img, setImg]= React.useState([])
-    
+
     //get search from input value 
     const debounceSave = useCallback(
         debounce((nextValue) => setSaveValue(nextValue), 500),
@@ -37,6 +37,21 @@ export default function Header(){
         }
         searchGetBook()
     }, [saveValue])
+
+    //get cover img from bookdata 
+    useEffect(() => {
+        async function addCover(){
+            try{
+                const res = await fetch(`https://covers.openlibrary.org/b/olid/${book.cover_edition_key}.jpg`)
+                const dataCover = await res.url
+                
+            }
+            catch(error){
+                console.log(`error ${error}`)
+            }
+        }
+        addCover()
+    }, [book])
 
     function handleSubmit(event){
         event.preventDefault()
