@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 export default function AddBook(props){
-    const setId = "count";
+    const setId = "Id";
     const [bookId, setBookId]=React.useState(()=>{
         const idValue = localStorage.getItem(setId)
         return idValue === null ? 0: JSON.parse(idValue) 
