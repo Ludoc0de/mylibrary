@@ -127,11 +127,13 @@ input[type=number] {
 }
 
 .info__ul {
-    display: flex;
-    text-align: center;
-    width: 25em;
     list-style: none;
     padding: 0;
+    width: 25em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: start;
+    row-gap: 0.2em;
 }
 
 .section__button {
