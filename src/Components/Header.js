@@ -1,43 +1,59 @@
-import React, {useEffect} from "react"
+import React, {useCallback, useEffect} from "react"
+import debounce from "lodash.debounce"
 import AddBook from "./AddBook"
 
 export default function Header(){
-   const[isbn, setIsbn]=React.useState({
-        searchBook:''
-    })
-
+    const [search, setSearch]=React.useState("")
+    const [saveValue, setSaveValue]=React.useState("")
     const [book, setBook]= React.useState([])
-    const [author, setAuthor]= React.useState([])
+    console.log(book)
+    const [img, setImg]= React.useState([])
 
-    //add isbn input 
+    //get search from input value 
+    const debounceSave = useCallback(
+        debounce((nextValue) => setSaveValue(nextValue), 800),
+        []
+    )
+    
     function handleChange(event){
-        const {name, value}= event.target
-        setIsbn(prevState => ({
-                ...prevState,
-                [name]:value
-        }))
+        const nextValue = event.target.value
+        setSearch(nextValue)
+        debounceSave(nextValue)
     }
 
-    //get bookdata with isbn
+    //get bookdata with search
     useEffect(() => {
-        async function isbnGetBook(){
-            const res = await fetch(`https://openlibrary.org/isbn/${isbn.searchBook}.json`)
-            const dataBook = await res.json()
-            setBook(dataBook)
+        async function searchGetBook(){
+            try{
+                const res = await fetch(`http://openlibrary.org/search.json?q=${saveValue}`)
+                const dataBooks = await res.json()
+                const data = dataBooks.docs.shift(0)
+                if(data){
+                  setBook(data)  
+                }
+            }
+            catch(error){
+                console.log(`error ${error}`)
+            }
         }
-        isbnGetBook()
-    }, [isbn])
+        searchGetBook()
+    }, [saveValue])
 
+    //get cover img from bookdata 
     useEffect(() => {
-        async function getAuthor(){
-            const authors = book.authors[0].key
-            const res = await fetch(`https://openlibrary.org${authors}.json`)
-            const dataAuthor = await res.json()
-            setAuthor(dataAuthor)
+        async function addCover(){
+            try{
+                const res = await fetch(`https://covers.openlibrary.org/b/olid/${book.cover_edition_key}.jpg`)
+                const dataCover = await res.url
+                dataCover.match(/\/OL/) && setImg(dataCover)
+            }
+            catch(error){
+                console.log(`error ${error}`)
+            }
         }
-        getAuthor()
-    },[book])
-    
+        addCover()
+    }, [book])
+
     function handleSubmit(event){
         event.preventDefault()
     }
@@ -46,27 +62,29 @@ export default function Header(){
         <header>
             <nav>
                 <h1 className="nav__title" >My library</h1>
-                <a>Get started</a>
+                <a href="#">Get started</a>
+                {search}
             </nav>
             <form onSubmit={handleSubmit}>
+                {saveValue}
                 <input 
                     className="form__input form__input_color"
-                    type="number" 
+                    type="text" 
                     name="searchBook"
-                    placeholder="add isbn book"
-                    value={isbn.searchBook}
+                    placeholder="search"
+                    value={search}
                     onChange={handleChange}
                 />
                 <AddBook 
                     key={book.id}
                     id={book.id}
-                    author={author.name} 
                     title={book.title}
-                    //languages={book.languages[0].key}
-                    pages={book.number_of_pages}
-                    publish_date={book.publish_date}
-                    format={book.physical_format}
-                    publisher={book.publishers}
+                    author={book.author_name} 
+                    pages={book.number_of_pages_median}
+                    publish_date={book.first_publish_year}
+                    //synopsis={book.first_sentence}
+                    publisher={book.publisher}
+                    cover={img}
                 />
             </form>
         </header>

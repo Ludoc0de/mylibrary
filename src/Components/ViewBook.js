@@ -2,7 +2,6 @@ import React from "react"
 import DeleteBook from "./DeleteBook"
 
 export default function ViewBook(props){
-   
     function deleteBook(id){
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         let booksArray = books.map(array => array.id)
@@ -14,14 +13,13 @@ export default function ViewBook(props){
 
     return(
         <section className="main__section">
-            <img className="section__img"/>
+            <img className="section__img" src={props.cover}/>
             <div className="section__info">
                 <h2>{props.title}</h2>
                 <h3>{props.author}</h3>
                 <ul className="info__ul">
                     <li>{props.pages} Pages</li>
                     <li>{props.publish_date} Publish date</li>
-                    <li>{props.format} Format</li>
                     <li>{props.publisher} Editor</li>
                 </ul>
                 <DeleteBook 

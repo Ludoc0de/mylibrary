@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 export default function AddBook(props){
-    const setId = "count";
+    const setId = "Id";
     const [bookId, setBookId]=React.useState(()=>{
         const idValue = localStorage.getItem(setId)
         return idValue === null ? 0: JSON.parse(idValue) 
@@ -11,8 +11,7 @@ export default function AddBook(props){
         localStorage.setItem(setId, JSON.stringify(bookId))
     }, [bookId])
 
-    function bookStorage(){
-        setBookId(prevState => prevState + 1)
+    function bookStorage(){    
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         const putBook = {
             id: bookId,
@@ -20,12 +19,13 @@ export default function AddBook(props){
             title: props.title,
             pages: props.pages,
             publish_date: props.publish_date,
-            format: props.format,
-            publisher: props.publisher[0]
+            publisher: props.publisher[0],
+            cover: props.cover
         };
 
         books.push(putBook);
         localStorage.setItem("books", JSON.stringify(books));
+        setBookId(prevState => prevState + 1)  
         window.location.reload();
     }
 
