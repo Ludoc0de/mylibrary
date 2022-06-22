@@ -154,8 +154,11 @@ input[type=number] {
 } */
 
 .svg__bookmark {
-    /* position: relative;
-    left: 0em; */
+    /* transform: rotate(-180deg); */
+}
+
+.svg__text {
+    font-size: medium;
 }
 
 .svg__path:hover .svg__text{
