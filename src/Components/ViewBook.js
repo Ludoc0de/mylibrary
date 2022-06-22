@@ -18,9 +18,9 @@ export default function ViewBook(props){
                 <h2>{props.title}</h2>
                 <h3>{props.author}</h3>
                 <ul className="info__ul">
-                    <li>Pages</li>
-                    <li>Publish Date</li>
-                    <li>Editor</li>
+                    <li><strong>Pages</strong></li>
+                    <li><strong>Publish Date</strong></li>
+                    <li><strong>Editor</strong></li>
                     <li>{props.pages}</li>
                     <li>{props.publish_date}</li>
                     <li>{props.publisher}</li>
