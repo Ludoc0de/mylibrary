@@ -11,8 +11,7 @@ export default function AddBook(props){
         localStorage.setItem(setId, JSON.stringify(bookId))
     }, [bookId])
 
-    function bookStorage(){
-        setBookId(prevState => prevState + 1)      
+    function bookStorage(){    
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         const putBook = {
             id: bookId,
@@ -26,6 +25,7 @@ export default function AddBook(props){
 
         books.push(putBook);
         localStorage.setItem("books", JSON.stringify(books));
+        setBookId(prevState => prevState + 1)  
         window.location.reload();
     }
 
