@@ -18,9 +18,12 @@ export default function ViewBook(props){
                 <h2>{props.title}</h2>
                 <h3>{props.author}</h3>
                 <ul className="info__ul">
-                    <li>{props.pages} Pages</li>
-                    <li>{props.publish_date} Publish date</li>
-                    <li>{props.publisher} Editor</li>
+                    <li>Pages</li>
+                    <li>publish date</li>
+                    <li>Editor</li>
+                    <li>{props.pages}</li>
+                    <li>{props.publish_date}</li>
+                    <li>{props.publisher}</li>
                 </ul>
                 <DeleteBook 
                     id={props.id}
