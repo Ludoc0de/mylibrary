@@ -6,11 +6,12 @@ export default function Header(){
     const [search, setSearch]=React.useState("")
     const [saveValue, setSaveValue]=React.useState("")
     const [book, setBook]= React.useState([])
+    console.log(book)
     const [img, setImg]= React.useState([])
 
     //get search from input value 
     const debounceSave = useCallback(
-        debounce((nextValue) => setSaveValue(nextValue), 500),
+        debounce((nextValue) => setSaveValue(nextValue), 800),
         []
     )
     
