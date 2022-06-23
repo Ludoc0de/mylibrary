@@ -62,7 +62,7 @@ export default function Header(){
         <header>
             <nav>
                 <h1 className="nav__title" >My library</h1>
-                <a href="#">Get started</a>
+                <a className="nav__link" href="#">Get started</a>
                 {search}
             </nav>
             <form onSubmit={handleSubmit}>
