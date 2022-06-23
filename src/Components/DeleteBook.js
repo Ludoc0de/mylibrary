@@ -11,7 +11,6 @@ export default function DeleteBook(props){
                     <path className="svg__path" d="M101 1H1L21.5 14.5L1 26H101V1Z" fill="#5081E8" stroke="#5081E8" stroke-width="0.5"/>
                 </svg> */}
                 <svg className="svg__bookmark" width="101" height="25" viewBox="0 0 101 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <text className="svg__text" x="16" y="18" fill="#5081E8">Delete Book</text>
                     <path className="svg__path" 
                         stroke="#5081E8" stroke-width="0.5"
                         d="M0 9.99999C0 4.47714 4.47715 0 10 0L97.2222 0V0C99.9581 0 101.253 3.3736 99.2199 5.20421L95.2852 8.74684C93.1892 
@@ -19,7 +18,8 @@ export default function DeleteBook(props){
                         24.5098 0 20.0327 0 14.5098L0 9.99999Z" 
                         fill="#5081E8"
                     />
-                </svg>     
+                </svg>
+                <p className="delete__button">Delete Book</p>     
             </button>
         </>
     )
