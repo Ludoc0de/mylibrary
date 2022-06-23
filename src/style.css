@@ -142,16 +142,13 @@ input[type=number] {
     left: 22em;
     border: none;
     background: none;
-
     cursor: pointer; 
 }
 
-/* .section__button:hover {
-    position: relative;
-    left: 20em;
-    height: 2em;
-    width: 10em;
-} */
+.svg__path {
+    transition: 0.4s ease;
+}
+
 .delete__button_text {
     position:relative;
     bottom:2.5em;
@@ -160,14 +157,7 @@ input[type=number] {
     color: var(--blue-color);
 }
 
-.svg__bookmark {
-    /* transform: rotate(-180deg); */
-}
-
-.svg__path:hover .svg__text{
-    transform: scaleX(2);
-}
-
-.svg__path:hover {
-    fill: transparent;
+.section__button:hover .svg__path {
+    transition: 0.4s ease;
+    transform: translate(-75px);
 }
