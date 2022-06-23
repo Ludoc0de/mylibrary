@@ -152,13 +152,16 @@ input[type=number] {
     height: 2em;
     width: 10em;
 } */
+.delete__button_text {
+    position:relative;
+    bottom:2.5em;
+    left:1em;
+    font-size: medium;
+    color: var(--blue-color);
+}
 
 .svg__bookmark {
     /* transform: rotate(-180deg); */
-}
-
-.svg__text {
-    font-size: medium;
 }
 
 .svg__path:hover .svg__text{
