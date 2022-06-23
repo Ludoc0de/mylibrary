@@ -19,7 +19,7 @@ export default function DeleteBook(props){
                         fill="#5081E8"
                     />
                 </svg>
-                <p className="delete__button">Delete Book</p>     
+                <p className="delete__button_text">Delete Book</p>     
             </button>
         </>
     )
