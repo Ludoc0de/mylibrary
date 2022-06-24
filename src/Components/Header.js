@@ -63,15 +63,18 @@ export default function Header(){
             <nav>
                 <h1 className="nav__title" >My library</h1>
                 <a className="nav__link" href="#">Get started</a>
-                {search}
             </nav>
             <form onSubmit={handleSubmit}>
-                {saveValue}
+                {
+                    !saveValue ? 
+                        <label for="searchBook">What's your book?</label>:
+                        <label for="searchBook">Is it {saveValue}? Add it!</label>
+                }
                 <input 
                     className="form__input form__input_color"
                     type="text" 
                     name="searchBook"
-                    placeholder="search"
+                    placeholder="search book: title, author, isbn"
                     value={search}
                     onChange={handleChange}
                 />
