@@ -38,7 +38,8 @@ body {
 h1,
 h2,
 h3,
-a {
+a,
+label {
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -57,7 +58,7 @@ nav {
     width: 12em;
 }
 
-nav > h1, a {
+.nav__title, .nav__link, label {
     font-size: 1em;
 }
 
@@ -65,6 +66,10 @@ nav > h1, a {
     text-decoration: none;
     color: var(--black-color);
     font-weight: bold;
+}
+
+label {
+    margin-right: -3em;
 }
 
 .form__input {
