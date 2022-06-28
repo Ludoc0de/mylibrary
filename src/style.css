@@ -54,8 +54,15 @@ label {
 header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 1em 0;
+    margin: 0 7% 0 5%;
+  
+    /* display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 1em 0; */
 }
 
 nav {
@@ -63,6 +70,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     width: 12em;
+    /* margin-right: 30%; */
 }
 
 .nav__title, .nav__link, label {
