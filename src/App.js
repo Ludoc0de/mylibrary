@@ -8,7 +8,7 @@ import "./style.css"
 
 export default function App(){
         return(
-            <div className="container">
+            <div>
                 <Header />
                 <Hero />
                 <Main />
