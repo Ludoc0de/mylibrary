@@ -121,7 +121,17 @@ input[type=number] {
 }
 
 /*Hero*/
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 15em;
+}
 
+.hero__image{
+    width: 80%;
+}
 
 /*main*/
 .main__container-section{
