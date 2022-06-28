@@ -35,6 +35,13 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.container {
+    width: calc(100% - 40px);
+    max-width: var(--container);
+    margin-left: auto;
+    margin-right: auto;
+}
+
 h1,
 h2,
 h3,
@@ -117,6 +124,7 @@ input[type=number] {
 .main__container-section{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-items: center;
 }
 
 .main__section {
