@@ -134,11 +134,11 @@ input[type=number] {
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     align-items: center;
-    margin-bottom: 15em;
+    margin: 4em 0 13em 0;
 }
 
-.hero__image{
-    width: 80%;
+.hero__image, .hero--text__container{
+    width: 36em;
 }
 
 /*main*/
