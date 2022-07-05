@@ -22,7 +22,7 @@ img{
 /*******************************************/
 
 :root {
-    --container: 1400px;
+    --container: 1250px;
     --black-color: #2D272C;
     --white-color: #fdfdfd;
     --blue-color: #5081E8;
@@ -143,9 +143,9 @@ input[type=number] {
 
 /*main*/
 .main__container-section{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .main__section {
