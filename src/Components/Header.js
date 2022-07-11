@@ -3,7 +3,10 @@ import debounce from "lodash.debounce"
 // import AddBook from "./AddBook"
 
 export default function Header(){
-    const [search, setSearch]=React.useState("")
+    const [search, setSearch]=React.useState({
+        searchBook:""
+    })
+    // console.log(search)
     //const [saveValue, setSaveValue]=React.useState("")
     const [book, setBook]= React.useState([])
     console.log(book)
@@ -22,8 +25,11 @@ export default function Header(){
 
     //onclick event addbook
     function bookStorage(){
+       console.log("ok click")
+
+       searchGetBook()
+
         console.log("get it")
-        searchGetBook()
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         const putBook = {
             id: bookId,
@@ -38,9 +44,11 @@ export default function Header(){
         console.log(putBook)
 
         books.push(putBook);
-        localStorage.setItem("books", JSON.stringify(books));
+        localStorage.setItem("books", JSON.stringify(books))
         setBookId(prevState => prevState + 1)  
+        console.log(putBook.id)
         // window.location.reload();
+
     }
 
     //get search from input value 
@@ -50,8 +58,14 @@ export default function Header(){
     // )
     
     function handleChange(event){
-        const nextValue = event.target.value
-        setSearch(nextValue)
+        setSearch(prevState => {
+            return {
+                ...prevState,
+                [event.target.name]: event.target.value
+            }
+        })
+        //const nextValue = event.target.value
+        //setSearch(nextValue)
         // debounceSave(nextValue)
     }
 
@@ -59,7 +73,7 @@ export default function Header(){
     // useEffect(() => {
         async function searchGetBook(){
             try{
-                const res = await fetch(`http://openlibrary.org/search.json?q=${search}`)
+                const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
                 const dataBooks = await res.json()
                 const data = dataBooks.docs.shift(0)
                 if(data){
@@ -100,17 +114,17 @@ export default function Header(){
             </nav>
             <form onSubmit={handleSubmit}>
                 {
-                    !search ? 
+                    !search.searchBook ? 
                         <label for="searchBook">What's your book?</label>:
-                        <label for="searchBook">Is it {search}? Add it!</label>
+                        <label for="searchBook">Is it {search.searchBook}? Add it!</label>
                 }
                 <input 
                     className="form__input form__input_color"
                     type="text" 
                     name="searchBook"
                     placeholder="search book: title, author, isbn"
-                    value={search}
                     onChange={handleChange}
+                    value={search.searchBook}
                 />
                 {/* delete */}
 
