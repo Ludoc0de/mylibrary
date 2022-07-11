@@ -62,13 +62,6 @@ export default function Header(){
         <header>
             <nav>
                 <h1 className="nav__title" >My library</h1>
-<<<<<<< HEAD
-                <a href="#">Get started</a>
-                {search}
-            </nav>
-            <form onSubmit={handleSubmit}>
-                {saveValue}
-=======
                 <a className="nav__link" href="#">Get started</a>
             </nav>
             <form onSubmit={handleSubmit}>
@@ -77,16 +70,11 @@ export default function Header(){
                         <label for="searchBook">What's your book?</label>:
                         <label for="searchBook">Is it {saveValue}? Add it!</label>
                 }
->>>>>>> surface
                 <input 
                     className="form__input form__input_color"
                     type="text" 
                     name="searchBook"
-<<<<<<< HEAD
-                    placeholder="search"
-=======
                     placeholder="search book: title, author, isbn"
->>>>>>> surface
                     value={search}
                     onChange={handleChange}
                 />
