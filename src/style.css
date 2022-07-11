@@ -22,7 +22,7 @@ img{
 /*******************************************/
 
 :root {
-    /* --container: 1800px; */
+    --container: 1250px;
     --black-color: #2D272C;
     --white-color: #fdfdfd;
     --blue-color: #5081E8;
@@ -35,9 +35,18 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.container {
+    width: calc(100% - 4em);
+    max-width: var(--container);
+    margin-left: auto;
+    margin-right: auto;
+}
+
 h1,
 h2,
-h3 {
+h3,
+a,
+label {
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -53,11 +62,21 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 12em;
 }
 
-nav > h1, a {
+.nav__title, .nav__link, label {
     font-size: 1em;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--black-color);
+    font-weight: bold;
+    margin-left: 4em;
+}
+
+label {
+    margin-right: -3em;
 }
 
 .form__input {
@@ -101,10 +120,23 @@ input[type=number] {
     color: var(--grey-color);
 }
 
+/*Hero*/
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4em 0 13em 0;
+}
+
+.hero__image, .hero--text__container{
+    width: 36em;
+}
+
 /*main*/
 .main__container-section{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .main__section {
@@ -127,11 +159,14 @@ input[type=number] {
 }
 
 .info__ul {
-    display: flex;
-    text-align: center;
-    width: 25em;
     list-style: none;
     padding: 0;
+    width: 25em;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 2em;
+    justify-items: start;
+    row-gap: 0.2em;
 }
 
 .section__button {
@@ -139,26 +174,22 @@ input[type=number] {
     left: 22em;
     border: none;
     background: none;
-
     cursor: pointer; 
 }
 
-/* .section__button:hover {
-    position: relative;
-    left: 20em;
-    height: 2em;
-    width: 10em;
-} */
-
-.svg__bookmark {
-    /* position: relative;
-    left: 0em; */
+.svg__path {
+    transition: 0.4s ease;
 }
 
-.svg__path:hover .svg__text{
-    transform: scaleX(2);
+.delete__button_text {
+    position:relative;
+    bottom:2.5em;
+    left:1em;
+    font-size: medium;
+    color: var(--blue-color);
 }
 
-.svg__path:hover {
-    fill: transparent;
+.section__button:hover .svg__path {
+    transition: 0.4s ease;
+    transform: translate(-75px);
 }
