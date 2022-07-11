@@ -4,33 +4,62 @@ import debounce from "lodash.debounce"
 
 export default function Header(){
     const [search, setSearch]=React.useState("")
-    const [saveValue, setSaveValue]=React.useState("")
+    //const [saveValue, setSaveValue]=React.useState("")
     const [book, setBook]= React.useState([])
     console.log(book)
     const [img, setImg]= React.useState([])
 
-    //onclick event
+    //creat id for each book
+    const setId = "Id";
+    const [bookId, setBookId]=React.useState(()=>{
+        const idValue = localStorage.getItem(setId)
+        return idValue === null ? 0: JSON.parse(idValue) 
+    })
+
+    useEffect(()=> {
+        localStorage.setItem(setId, JSON.stringify(bookId))
+    }, [bookId])
+
+    //onclick event addbook
     function bookStorage(){
         console.log("get it")
+        searchGetBook()
+        const books = JSON.parse(localStorage.getItem("books") || "[]");
+        const putBook = {
+            id: bookId,
+            name: book.author_name[0],
+            title: book.title,
+            pages: book.number_of_pages_median,
+            publish_date: book.first_publish_year,
+            publisher: book.publisher[0],
+            cover: img,
+            count: 1
+        };
+        console.log(putBook)
+
+        books.push(putBook);
+        localStorage.setItem("books", JSON.stringify(books));
+        setBookId(prevState => prevState + 1)  
+        // window.location.reload();
     }
 
     //get search from input value 
-    const debounceSave = useCallback(
-        debounce((nextValue) => setSaveValue(nextValue), 800),
-        []
-    )
+    // const debounceSave = useCallback(
+    //     debounce((nextValue) => setSaveValue(nextValue), 800),
+    //     []
+    // )
     
     function handleChange(event){
         const nextValue = event.target.value
         setSearch(nextValue)
-        debounceSave(nextValue)
+        // debounceSave(nextValue)
     }
 
     //get bookdata with search
-    useEffect(() => {
+    // useEffect(() => {
         async function searchGetBook(){
             try{
-                const res = await fetch(`http://openlibrary.org/search.json?q=${saveValue}`)
+                const res = await fetch(`http://openlibrary.org/search.json?q=${search}`)
                 const dataBooks = await res.json()
                 const data = dataBooks.docs.shift(0)
                 if(data){
@@ -41,8 +70,8 @@ export default function Header(){
                 console.log(`error ${error}`)
             }
         }
-        searchGetBook()
-    }, [saveValue])
+        // searchGetBook()
+    // }, [search])
 
     //get cover img from bookdata 
     useEffect(() => {
@@ -71,9 +100,9 @@ export default function Header(){
             </nav>
             <form onSubmit={handleSubmit}>
                 {
-                    !saveValue ? 
+                    !search ? 
                         <label for="searchBook">What's your book?</label>:
-                        <label for="searchBook">Is it {saveValue}? Add it!</label>
+                        <label for="searchBook">Is it {search}? Add it!</label>
                 }
                 <input 
                     className="form__input form__input_color"
