@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect} from "react"
 import debounce from "lodash.debounce"
-import AddBook from "./AddBook"
+// import AddBook from "./AddBook"
 
 export default function Header(){
     const [search, setSearch]=React.useState("")
@@ -8,6 +8,11 @@ export default function Header(){
     const [book, setBook]= React.useState([])
     console.log(book)
     const [img, setImg]= React.useState([])
+
+    //onclick event
+    function bookStorage(){
+        console.log("get it")
+    }
 
     //get search from input value 
     const debounceSave = useCallback(
@@ -78,7 +83,9 @@ export default function Header(){
                     value={search}
                     onChange={handleChange}
                 />
-                <AddBook 
+                {/* delete */}
+
+                {/* <AddBook 
                     key={book.id}
                     id={book.id}
                     title={book.title}
@@ -88,7 +95,16 @@ export default function Header(){
                     //synopsis={book.first_sentence}
                     publisher={book.publisher}
                     cover={img}
-                />
+                /> */}
+
+                {/* replace */}
+
+                <button 
+                className="form__button form__button_color"
+                onClick={bookStorage}
+                >
+                    Add book
+                </button>
             </form>
         </header>
     )
