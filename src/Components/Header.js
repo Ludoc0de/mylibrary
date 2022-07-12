@@ -6,59 +6,12 @@ export default function Header(){
     const [search, setSearch]=React.useState({
         searchBook:""
     })
-    // console.log(search)
-    //const [saveValue, setSaveValue]=React.useState("")
     const [book, setBook]= React.useState([])
-    // console.log(book)
     const [img, setImg]= React.useState([])
 
-    //creat id for each book
-    const setId = "Id";
-    const [bookId, setBookId]=React.useState(()=>{
-        const idValue = localStorage.getItem(setId)
-        return idValue === null ? 0: JSON.parse(idValue) 
-    })
-
-    useEffect(()=> {
-        localStorage.setItem(setId, JSON.stringify(bookId))
-    }, [bookId])
-
-    //onclick event addbook
     function bookStorage(){
-       console.log("ok click")
-
-       searchGetBook()
-
-        console.log("get it")
-        const books = JSON.parse(localStorage.getItem("books") || "[]");
-        const putBook = {
-            id: bookId,
-            name: book.author_name[0],
-            title: book.title,
-            pages: book.number_of_pages_median,
-            publish_date: book.first_publish_year,
-            publisher: book.publisher[0],
-            cover: img,
-            count: 1
-        };
-        books.push(putBook);
-        localStorage.setItem("books", JSON.stringify(books))
-        setBookId(prevState => prevState + 1)  
-        // window.location.reload();
-
+        console.log("test")
     }
-
-    //refresh the page when localeStorage change
-    useEffect(()=>{
-        const data = localStorage.getItem("books")
-        setBook(JSON.parse(data))
-    }, [])
-
-    //get search from input value 
-    // const debounceSave = useCallback(
-    //     debounce((nextValue) => setSaveValue(nextValue), 800),
-    //     []
-    // )
     
     function handleChange(event){
         setSearch(prevState => {
@@ -67,28 +20,22 @@ export default function Header(){
                 [event.target.name]: event.target.value
             }
         })
-        //const nextValue = event.target.value
-        //setSearch(nextValue)
-        // debounceSave(nextValue)
     }
 
     //get bookdata with search
-    // useEffect(() => {
-        async function searchGetBook(){
-            try{
-                const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
-                const dataBooks = await res.json()
-                const data = dataBooks.docs.shift(0)
-                if(data){
-                  setBook(data)  
-                }
-            }
-            catch(error){
-                console.log(`error ${error}`)
+    async function searchGetBook(){
+        try{
+            const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
+            const dataBooks = await res.json()
+            const data = dataBooks.docs.shift(0)
+            if(data){
+                setBook(data)  
             }
         }
-        // searchGetBook()
-    // }, [search])
+        catch(error){
+            console.log(`error ${error}`)
+        }
+    }
 
     //get cover img from bookdata 
     useEffect(() => {
