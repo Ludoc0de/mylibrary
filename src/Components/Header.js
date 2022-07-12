@@ -9,7 +9,7 @@ export default function Header(){
     // console.log(search)
     //const [saveValue, setSaveValue]=React.useState("")
     const [book, setBook]= React.useState([])
-    console.log(book)
+    // console.log(book)
     const [img, setImg]= React.useState([])
 
     //creat id for each book
@@ -41,15 +41,18 @@ export default function Header(){
             cover: img,
             count: 1
         };
-        console.log(putBook)
-
         books.push(putBook);
         localStorage.setItem("books", JSON.stringify(books))
         setBookId(prevState => prevState + 1)  
-        console.log(putBook.id)
         // window.location.reload();
 
     }
+
+    //refresh the page when localeStorage change
+    useEffect(()=>{
+        const data = localStorage.getItem("books")
+        setBook(JSON.parse(data))
+    }, [])
 
     //get search from input value 
     // const debounceSave = useCallback(
