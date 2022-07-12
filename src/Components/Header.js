@@ -8,28 +8,34 @@ export default function Header(){
     })
     const [book, setBook]= React.useState([])
     const [img, setImg]= React.useState([])
-    //
-    const books = JSON.parse(localStorage.getItem("books"));
-    const [bookId, setBookId] = React.useState(books[books.length-1].id)
-    console.log(bookId)
 
+    //create or get last id
+    const books = JSON.parse(localStorage.getItem("books"));
+    let id = JSON.parse(localStorage.getItem("id"));
+    id === null ? id = 0 : id++ 
+    localStorage.setItem("id", JSON.stringify(id));
+    //console.log(id)
+
+    const [bookId, setBookId] = React.useState(0)
+
+    //add book on click and increase id
     function bookStorage(){
         searchGetBook()
-        setBookId(prevState => prevState + 1)
-        console.log(bookId)
-
+        setBookId(prevState => prevState + 1) 
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         const putBook = {
             id: bookId,
-            name: props.author,
-            title: props.title,
-            pages: props.pages,
-            publish_date: props.publish_date,
-            publisher: props.publisher[0],
-            cover: props.cover,
+            name: book.author_name[0],
+            title: book.title,
+            pages: book.number_of_pages_median,
+            publish_date: book.first_publish_year,
+            publisher: book.publisher[0],
+            cover: img,
             count: 1
         };
-      
+        
+        books.push(putBook);
+        localStorage.setItem("books", JSON.stringify(books)); 
     }
     
     function handleChange(event){
