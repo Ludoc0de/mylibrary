@@ -8,9 +8,28 @@ export default function Header(){
     })
     const [book, setBook]= React.useState([])
     const [img, setImg]= React.useState([])
+    //
+    const books = JSON.parse(localStorage.getItem("books"));
+    const [bookId, setBookId] = React.useState(books[books.length-1].id)
+    console.log(bookId)
 
     function bookStorage(){
-        console.log("test")
+        searchGetBook()
+        setBookId(prevState => prevState + 1)
+        console.log(bookId)
+
+        const books = JSON.parse(localStorage.getItem("books") || "[]");
+        const putBook = {
+            id: bookId,
+            name: props.author,
+            title: props.title,
+            pages: props.pages,
+            publish_date: props.publish_date,
+            publisher: props.publisher[0],
+            cover: props.cover,
+            count: 1
+        };
+      
     }
     
     function handleChange(event){
