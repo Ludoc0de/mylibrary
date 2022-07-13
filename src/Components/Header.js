@@ -13,7 +13,7 @@ export default function Header(){
     const [id, setId]= React.useState(0)
 
     useEffect(() => {
-        const data = window.localStorage.getItem('bookId')
+        const data = localStorage.getItem('bookId')
         setId(JSON.parse(data))
     }, [])
     
@@ -24,7 +24,21 @@ export default function Header(){
 
     //add book on click and increase id
     function bookStorage(){
+        searchGetBook()
         setId(prevState => prevState + 1)
+        const books = JSON.parse(localStorage.getItem("books") || "[]");
+        const putBook = {
+            id: id,
+            name: book.author_name[0],
+            title: book.title,
+            pages: book.number_of_pages_median,
+            publish_date: book.first_publish_year,
+            publisher: book.publisher[0],
+            cover: img,
+            count: 1
+        }
+        books.push(putBook);
+        localStorage.setItem("books", JSON.stringify(books)); 
     }
     
     function handleChange(event){
@@ -38,6 +52,7 @@ export default function Header(){
 
     //get bookdata with search
     async function searchGetBook(){
+        console.log("test")
         try{
             const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
             const dataBooks = await res.json()
