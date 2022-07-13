@@ -10,11 +10,21 @@ export default function Header(){
     const [img, setImg]= React.useState([])
 
     //create or get last id
+    const [id, setId]= React.useState(0)
+
+    useEffect(() => {
+        const data = window.localStorage.getItem('bookId')
+        setId(JSON.parse(data))
+    }, [])
+    
+    useEffect(() => {
+        localStorage.setItem('bookId', JSON.stringify(id))
+    }, [id])
 
 
     //add book on click and increase id
     function bookStorage(){
-     
+        setId(prevState => prevState + 1)
     }
     
     function handleChange(event){
