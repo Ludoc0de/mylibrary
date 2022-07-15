@@ -11,16 +11,16 @@ export default function Header(){
     const [img, setImg]= React.useState([])
 
     //create or get last id
-    const [id, setId]= React.useState(0)
+    // const [id, setId]= React.useState(0)
 
-    useEffect(() => {
-        const data = localStorage.getItem('bookId')
-        setId(JSON.parse(data))
-    }, [])
+    // useEffect(() => {
+    //     const data = localStorage.getItem('bookId')
+    //     setId(JSON.parse(data))
+    // }, [])
     
-    useEffect(() => {
-        localStorage.setItem('bookId', JSON.stringify(id))
-    }, [id])
+    // useEffect(() => {
+    //     localStorage.setItem('bookId', JSON.stringify(id))
+    // }, [id])
 
 
     //search book on click
