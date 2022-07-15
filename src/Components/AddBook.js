@@ -1,33 +1,38 @@
 import React, { useEffect } from 'react'
 
 export default function AddBook(props){
-    const setId = "Id";
-    const [bookId, setBookId]=React.useState(()=>{
-        const idValue = localStorage.getItem(setId)
-        return idValue === null ? 0: JSON.parse(idValue) 
-    })
+    console.log(props)
+    //create or get last id
+    const [id, setId]= React.useState(0)
 
-    useEffect(()=> {
-        localStorage.setItem(setId, JSON.stringify(bookId))
-    }, [bookId])
+    useEffect(() => {
+        const data = localStorage.getItem('bookId')
+        setId(JSON.parse(data))
+    }, [])
+    
+    useEffect(() => {
+        localStorage.setItem('bookId', JSON.stringify(id))
+    }, [id])
 
     function bookStorage(){    
-        const books = JSON.parse(localStorage.getItem("books") || "[]");
-        const putBook = {
-            id: bookId,
-            name: props.author,
-            title: props.title,
-            pages: props.pages,
-            publish_date: props.publish_date,
-            publisher: props.publisher[0],
-            cover: props.cover,
-            count: 1
-        };
+        console.log("test")
+        setId(prevState => prevState + 1)
+        // const books = JSON.parse(localStorage.getItem("books") || "[]");
+        // const putBook = {
+        //     id: bookId,
+        //     name: props.author,
+        //     title: props.title,
+        //     pages: props.pages,
+        //     publish_date: props.publish_date,
+        //     publisher: props.publisher[0],
+        //     cover: props.cover,
+        //     count: 1
+        // };
 
-        books.push(putBook);
-        localStorage.setItem("books", JSON.stringify(books));
-        setBookId(prevState => prevState + 1)  
-        window.location.reload();
+        // books.push(putBook);
+        // localStorage.setItem("books", JSON.stringify(books));
+        // setBookId(prevState => prevState + 1)  
+        // window.location.reload();
     }
 
     return (
