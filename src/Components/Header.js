@@ -1,12 +1,13 @@
 import React, {useCallback, useEffect} from "react"
 import debounce from "lodash.debounce"
-// import AddBook from "./AddBook"
+import AddBook from "./AddBook"
 
 export default function Header(){
     const [search, setSearch]=React.useState({
         searchBook:""
     })
     const [book, setBook]= React.useState([])
+    console.log(book)
     const [img, setImg]= React.useState([])
 
     //create or get last id
@@ -22,37 +23,8 @@ export default function Header(){
     }, [id])
 
 
-    //add book on click and increase id
-    function bookStorage(){
-        searchGetBook()
-        setId(prevState => prevState + 1)
-        const books = JSON.parse(localStorage.getItem("books") || "[]");
-        const putBook = {
-            id: id,
-            name: book.author_name[0],
-            title: book.title,
-            pages: book.number_of_pages_median,
-            publish_date: book.first_publish_year,
-            publisher: book.publisher[0],
-            cover: img,
-            count: 1
-        }
-        books.push(putBook);
-        localStorage.setItem("books", JSON.stringify(books)); 
-    }
-    
-    function handleChange(event){
-        setSearch(prevState => {
-            return {
-                ...prevState,
-                [event.target.name]: event.target.value
-            }
-        })
-    }
-
-    //get bookdata with search
-    async function searchGetBook(){
-        console.log("test")
+    //search book on click
+    async function findBook(){
         try{
             const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
             const dataBooks = await res.json()
@@ -64,22 +36,68 @@ export default function Header(){
         catch(error){
             console.log(`error ${error}`)
         }
+
+        // searchGetBook()
+        // setId(prevState => prevState + 1)
+        // const books = JSON.parse(localStorage.getItem("books") || "[]");
+        // const putBook = {
+        //     id: id,
+        //     name: book.author_name[0],
+        //     title: book.title,
+        //     pages: book.number_of_pages_median,
+        //     publish_date: book.first_publish_year,
+        //     publisher: book.publisher[0],
+        //     // cover: img,
+        //     count: 1
+        // }
+        // books.push(putBook);
+        // localStorage.setItem("books", JSON.stringify(books)); 
+    }
+    
+    function handleChange(event){
+        setSearch(prevState => {
+            return {
+                ...prevState,
+                [event.target.name]: event.target.value
+            }
+        })
     }
 
+    //get bookdata with search X
+    // useEffect(() => {
+    //     async function searchGetBook(){
+    //         console.log("test")
+    //         try{
+    //             const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
+    //             console.log(search.searchBook)
+    //             const dataBooks = await res.json()
+    //             const data = dataBooks.docs.shift(0)
+    //             console.log(data)
+    //             if(data){
+    //                 setBook(data)  
+    //             }
+    //         }
+    //         catch(error){
+    //             console.log(`error ${error}`)
+    //         }
+    //     }
+    //     searchGetBook()
+    // }, [])
+
     //get cover img from bookdata 
-    useEffect(() => {
-        async function addCover(){
-            try{
-                const res = await fetch(`https://covers.openlibrary.org/b/olid/${book.cover_edition_key}.jpg`)
-                const dataCover = await res.url
-                dataCover.match(/\/OL/) && setImg(dataCover)
-            }
-            catch(error){
-                console.log(`error ${error}`)
-            }
-        }
-        addCover()
-    }, [book])
+    // useEffect(() => {
+    //     async function addCover(){
+    //         try{
+    //             const res = await fetch(`https://covers.openlibrary.org/b/olid/${book.cover_edition_key}.jpg`)
+    //             const dataCover = await res.url
+    //             dataCover.match(/\/OL/) && setImg(dataCover)
+    //         }
+    //         catch(error){
+    //             console.log(`error ${error}`)
+    //         }
+    //     }
+    //     addCover()
+    // }, [book])
 
     function handleSubmit(event){
         event.preventDefault()
@@ -105,9 +123,8 @@ export default function Header(){
                     onChange={handleChange}
                     value={search.searchBook}
                 />
-                {/* delete */}
 
-                {/* <AddBook 
+                <AddBook 
                     key={book.id}
                     id={book.id}
                     title={book.title}
@@ -117,15 +134,13 @@ export default function Header(){
                     //synopsis={book.first_sentence}
                     publisher={book.publisher}
                     cover={img}
-                /> */}
-
-                {/* replace */}
+                />
 
                 <button 
                 className="form__button form__button_color"
-                onClick={bookStorage}
+                onClick={findBook}
                 >
-                    Add book
+                    find book
                 </button>
             </form>
         </header>
