@@ -23,7 +23,7 @@ export default function AddBook(props){
             pages: props.pages,
             publish_date: props.publish_date,
             publisher: props.publisher[0],
-            // cover: img,
+            cover: props.cover,
             count: 1
         }
         books.push(putBook);
