@@ -34,7 +34,7 @@ export default function Header(){
         })
     }
 
-    //get cover img from bookdata 
+    //get cover img from book
     useEffect(() => {
         async function addCover(){
             try{

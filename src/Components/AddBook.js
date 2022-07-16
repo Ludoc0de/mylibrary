@@ -13,8 +13,9 @@ export default function AddBook(props){
     }, [id])
 
     function bookStorage(){    
-        console.log("test")
+        //increase id on click
         setId(prevState => prevState + 1)
+        //get data from local, creat a var with props data to push
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         const putBook = {
             id: id,
