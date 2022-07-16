@@ -7,7 +7,6 @@ export default function Header(){
         searchBook:""
     })
     const [book, setBook]= React.useState([])
-    console.log(book)
     const [img, setImg]= React.useState([])
 
     //search book on click
@@ -36,19 +35,19 @@ export default function Header(){
     }
 
     //get cover img from bookdata 
-    // useEffect(() => {
-    //     async function addCover(){
-    //         try{
-    //             const res = await fetch(`https://covers.openlibrary.org/b/olid/${book.cover_edition_key}.jpg`)
-    //             const dataCover = await res.url
-    //             dataCover.match(/\/OL/) && setImg(dataCover)
-    //         }
-    //         catch(error){
-    //             console.log(`error ${error}`)
-    //         }
-    //     }
-    //     addCover()
-    // }, [book])
+    useEffect(() => {
+        async function addCover(){
+            try{
+                const res = await fetch(`https://covers.openlibrary.org/b/olid/${book.cover_edition_key}.jpg`)
+                const dataCover = await res.url
+                dataCover.match(/\/OL/) && setImg(dataCover)
+            }
+            catch(error){
+                console.log(`error ${error}`)
+            }
+        }
+        addCover()
+    }, [book])
 
     function handleSubmit(event){
         event.preventDefault()
