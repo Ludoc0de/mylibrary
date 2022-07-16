@@ -10,19 +10,6 @@ export default function Header(){
     console.log(book)
     const [img, setImg]= React.useState([])
 
-    //create or get last id
-    // const [id, setId]= React.useState(0)
-
-    // useEffect(() => {
-    //     const data = localStorage.getItem('bookId')
-    //     setId(JSON.parse(data))
-    // }, [])
-    
-    // useEffect(() => {
-    //     localStorage.setItem('bookId', JSON.stringify(id))
-    // }, [id])
-
-
     //search book on click
     async function findBook(){
         try{
@@ -37,21 +24,6 @@ export default function Header(){
             console.log(`error ${error}`)
         }
 
-        // searchGetBook()
-        // setId(prevState => prevState + 1)
-        // const books = JSON.parse(localStorage.getItem("books") || "[]");
-        // const putBook = {
-        //     id: id,
-        //     name: book.author_name[0],
-        //     title: book.title,
-        //     pages: book.number_of_pages_median,
-        //     publish_date: book.first_publish_year,
-        //     publisher: book.publisher[0],
-        //     // cover: img,
-        //     count: 1
-        // }
-        // books.push(putBook);
-        // localStorage.setItem("books", JSON.stringify(books)); 
     }
     
     function handleChange(event){
@@ -62,27 +34,6 @@ export default function Header(){
             }
         })
     }
-
-    //get bookdata with search X
-    // useEffect(() => {
-    //     async function searchGetBook(){
-    //         console.log("test")
-    //         try{
-    //             const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
-    //             console.log(search.searchBook)
-    //             const dataBooks = await res.json()
-    //             const data = dataBooks.docs.shift(0)
-    //             console.log(data)
-    //             if(data){
-    //                 setBook(data)  
-    //             }
-    //         }
-    //         catch(error){
-    //             console.log(`error ${error}`)
-    //         }
-    //     }
-    //     searchGetBook()
-    // }, [])
 
     //get cover img from bookdata 
     // useEffect(() => {
