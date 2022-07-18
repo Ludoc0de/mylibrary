@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect} from "react"
 import debounce from "lodash.debounce"
 import AddBook from "./AddBook"
+export const Context = React.createContext();
 
 export default function Header(){
     const [search, setSearch]=React.useState({
@@ -10,7 +11,7 @@ export default function Header(){
     const [book, setBook]= React.useState([])
     const [img, setImg]= React.useState([])
 
-    //
+    //add || remove btn on click 
     const styles= {
         display: buttonFind ? "inline" : "none"
     }
@@ -81,19 +82,19 @@ export default function Header(){
                     value={search.searchBook}
                 />
 
-                <AddBook 
-                    key={book.id}
-                    id={book.id}
-                    title={book.title}
-                    author={book.author_name} 
-                    pages={book.number_of_pages_median}
-                    publish_date={book.first_publish_year}
-                    //synopsis={book.first_sentence}
-                    publisher={book.publisher}
-                    cover={img}
-                    test={buttonFind}
-                />
-
+                <Context.Provider value={[buttonFind, setButtonFind]}>
+                    <AddBook 
+                        key={book.id}
+                        id={book.id}
+                        title={book.title}
+                        author={book.author_name} 
+                        pages={book.number_of_pages_median}
+                        publish_date={book.first_publish_year}
+                        //synopsis={book.first_sentence}
+                        publisher={book.publisher}
+                        cover={img}
+                    />
+                </Context.Provider>
                 <button 
                 className="form__button form__button_color"
                 onClick={findBook}
