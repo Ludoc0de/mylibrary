@@ -1,15 +1,15 @@
-import React, {useCallback, useEffect} from "react"
+import React, {useState, useEffect, createContext} from "react"
 import debounce from "lodash.debounce"
 import AddBook from "./AddBook"
-export const Context = React.createContext();
+export const Context = createContext();
 
 export default function Header(){
-    const [search, setSearch]=React.useState({
+    const [search, setSearch]=useState({
         searchBook:""
     })
-    const [buttonFind, setButtonFind]= React.useState(true)
-    const [book, setBook]= React.useState([])
-    const [img, setImg]= React.useState([])
+    const [buttonFind, setButtonFind]= useState(true)
+    const [book, setBook]= useState([])
+    const [img, setImg]= useState([])
 
     //add || remove btn on click 
     const styles= {
