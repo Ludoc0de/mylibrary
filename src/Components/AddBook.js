@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Context } from './Header'
 
 export default function AddBook(props){
     //create or get last id
-    const [id, setId]= React.useState(0)
+    const [id, setId]= useState(0)
     useEffect(() => {
         const data = localStorage.getItem('bookId')
         setId(JSON.parse(data))
@@ -12,11 +12,17 @@ export default function AddBook(props){
     useEffect(() => {
         localStorage.setItem('bookId', JSON.stringify(id))
     }, [id])
-    //
+
+    //get the state from Header
     const [buttonFind, setButtonFind] = useContext(Context)
 
+    const styles= {
+        display: buttonFind ? "none" : "inline"
+    }
+
     function bookStorage(){  
-        //  
+        //update onClick  
+        setButtonFind(prevState => !prevState)
         //increase id on click
         setId(prevState => prevState + 1)
         //get data from local, creat a var with props data to push
@@ -40,6 +46,7 @@ export default function AddBook(props){
         <button 
             className="form__button form__button_color"
             onClick={bookStorage}
+            style={styles}
         >
             Add book
         </button>
