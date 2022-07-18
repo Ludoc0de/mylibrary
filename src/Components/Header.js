@@ -6,11 +6,18 @@ export default function Header(){
     const [search, setSearch]=React.useState({
         searchBook:""
     })
+    const [buttonFind, setButtonFind]= React.useState(true)
     const [book, setBook]= React.useState([])
     const [img, setImg]= React.useState([])
 
+    //
+    const styles= {
+        display: buttonFind ? "inline" : "none"
+    }
+
     //search book on click
     async function findBook(){
+        setButtonFind(prevState => !prevState)
         try{
             const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
             const dataBooks = await res.json()
@@ -84,11 +91,13 @@ export default function Header(){
                     //synopsis={book.first_sentence}
                     publisher={book.publisher}
                     cover={img}
+                    test={buttonFind}
                 />
 
                 <button 
                 className="form__button form__button_color"
                 onClick={findBook}
+                style={styles}
                 >
                     find book
                 </button>
