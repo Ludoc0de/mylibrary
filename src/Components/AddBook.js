@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { Context } from './Header'
 
 export default function AddBook(props){
     //create or get last id
@@ -11,8 +12,11 @@ export default function AddBook(props){
     useEffect(() => {
         localStorage.setItem('bookId', JSON.stringify(id))
     }, [id])
+    //
+    const [buttonFind, setButtonFind] = useContext(Context)
 
-    function bookStorage(){    
+    function bookStorage(){  
+        //  
         //increase id on click
         setId(prevState => prevState + 1)
         //get data from local, creat a var with props data to push
