@@ -92,7 +92,21 @@ label {
 .form__input_color {
     background-color: var(--grey-color);
 }
+/*spin*/
+.svg_background {
+    stroke:pink;
+    stroke-width: 3;
+}
 
+.svg_filled {
+    stroke: blue;
+    stroke-width: 3;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s ease-in-out;
+}
+
+/*
 @keyframes form__spin {
     0% {
         transform: translate3d(-50%, -50%, 0) rotate(0deg);
@@ -104,7 +118,6 @@ label {
 }
 
 .form__spin::before {
-    /*
     animation: 1.5s linear infinite form__spin;
     animation-play-state: inherit;
     border: solid 5px #f4f4f4;
@@ -118,8 +131,8 @@ label {
     transform: translate3d(-50%, -50%, 0);
     width: 10px;
     will-change: transform;
-    */
 }
+*/
 
 /*remove input arrow */
 /* Chrome, Safari, Edge, Opera */
