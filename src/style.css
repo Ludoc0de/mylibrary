@@ -104,10 +104,10 @@ label {
     stroke-width: 3;
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
-    animation: example 1s infinite linear;
+    animation: anime 1s infinite linear;
 }
 
-@keyframes example {
+@keyframes anime {
     0% {
         stroke-dashoffset: 1;
     }
