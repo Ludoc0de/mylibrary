@@ -9,7 +9,9 @@ export default function Header(){
     })
     const [buttonFind, setButtonFind]= useState(true)
     const [book, setBook]= useState([])
+    console.log(book)
     const [img, setImg]= useState([])
+    const [spin, setSpin]= useState(false)
 
     //add || remove btn on click 
     const styles= {
@@ -18,13 +20,15 @@ export default function Header(){
 
     //search book on click
     async function findBook(){
+        //toggle onClick
+        setSpin(prevState => !prevState)
         setButtonFind(prevState => !prevState)
         try{
             const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
             const dataBooks = await res.json()
             const data = dataBooks.docs.shift(0)
             if(data){
-                setBook(data)  
+                setBook(data) 
             }
         }
         catch(error){
@@ -61,6 +65,11 @@ export default function Header(){
         event.preventDefault()
     }
 
+    //spin till data rdy
+    /*click on find book will start spin*/
+    /*spin will stop, when get data from book, use useEffect*/
+
+
     return(
         <header>
             <nav>
@@ -68,6 +77,14 @@ export default function Header(){
                 <a className="nav__link" href="#">Get started</a>
             </nav>
             <form onSubmit={handleSubmit}>
+                <span className='form__spin'>
+                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="49.5" stroke="#F4F4F4"/>
+                    </svg>
+                    <svg width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="47" stroke="blue" stroke-width="6"/>
+                    </svg>
+                </span>
                 {
                     !search.searchBook ? 
                         <label for="searchBook">What's your book?</label>:
