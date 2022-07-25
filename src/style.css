@@ -93,6 +93,34 @@ label {
     background-color: var(--grey-color);
 }
 
+@keyframes form__spin {
+    0% {
+        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    }
+
+    100% {
+        transform: translate3d(-50%, -50%, 0) rotate(360deg);
+    }
+}
+
+.form__spin::before {
+    /*
+    animation: 1.5s linear infinite form__spin;
+    animation-play-state: inherit;
+    border: solid 5px #f4f4f4;
+    border-bottom-color: #5081E8;
+    border-radius: 50%;
+    content: "";
+    height: 10px;
+    position: absolute;
+    top: 2em;
+    left: 10%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 10px;
+    will-change: transform;
+    */
+}
+
 /*remove input arrow */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
