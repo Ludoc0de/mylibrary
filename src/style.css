@@ -92,47 +92,42 @@ label {
 .form__input_color {
     background-color: var(--grey-color);
 }
+
 /*spin*/
 .svg_background {
-    stroke:pink;
+    stroke:var(--grey-color);
     stroke-width: 3;
 }
 
 .svg_filled {
-    stroke: blue;
+    stroke: var(--blue-color);
     stroke-width: 3;
     stroke-dasharray: 1;
-    stroke-dashoffset: 0;
-    transition: stroke-dashoffset 1s ease-in-out;
+    stroke-dashoffset: 1;
+    animation: example 1s infinite linear;
 }
 
-/*
-@keyframes form__spin {
+@keyframes example {
     0% {
-        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+        stroke-dashoffset: 1;
+    }
+
+    25% {
+        stroke-dashoffset: 0.75;
+    }
+
+    50% {
+        stroke-dashoffset: 0.5;
+    }
+
+    75% {
+        stroke-dashoffset: 0.25;
     }
 
     100% {
-        transform: translate3d(-50%, -50%, 0) rotate(360deg);
+        stroke-dashoffset: 0;
     }
 }
-
-.form__spin::before {
-    animation: 1.5s linear infinite form__spin;
-    animation-play-state: inherit;
-    border: solid 5px #f4f4f4;
-    border-bottom-color: #5081E8;
-    border-radius: 50%;
-    content: "";
-    height: 10px;
-    position: absolute;
-    top: 2em;
-    left: 10%;
-    transform: translate3d(-50%, -50%, 0);
-    width: 10px;
-    will-change: transform;
-}
-*/
 
 /*remove input arrow */
 /* Chrome, Safari, Edge, Opera */
