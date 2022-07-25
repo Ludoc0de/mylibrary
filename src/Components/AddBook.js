@@ -21,7 +21,7 @@ export default function AddBook(props){
     }
 
     function bookStorage(){  
-        //update onClick  
+        //toggle onClick  
         setButtonFind(prevState => !prevState)
         //increase id on click
         setId(prevState => prevState + 1)
