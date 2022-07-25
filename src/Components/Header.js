@@ -79,7 +79,8 @@ export default function Header(){
             <form onSubmit={handleSubmit}>
                 <span className='form__spin'>
                     <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12.5" cy="12.5" r="10" stroke="#F4F4F4" stroke-width="3"/>
+                        <circle class="svg_background"cx="12.5" cy="12.5" r="10"/>
+                        <circle class="svg_filled"cx="12.5" cy="12.5" r="10" pathLength="1"/>
                     </svg>
                 </span>
                 {
