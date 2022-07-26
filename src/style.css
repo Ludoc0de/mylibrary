@@ -110,7 +110,7 @@ svg {
     stroke-width: 3;
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
-    animation: anime 1s infinite linear;
+    animation: anime 0.5s infinite linear;
 }
 
 @keyframes anime {
