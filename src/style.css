@@ -94,6 +94,12 @@ label {
 }
 
 /*spin*/
+svg {
+    position: relative;
+    top: 0.5em;
+    left: -0.5em;
+}
+
 .svg_background {
     stroke:var(--grey-color);
     stroke-width: 3;
