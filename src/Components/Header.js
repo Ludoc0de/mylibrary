@@ -101,8 +101,7 @@ export default function Header(){
 
                 <Context.Provider value={[buttonFind, setButtonFind]}>
                     <AddBook 
-                        key={book.id}
-                        id={book.id}
+                        id={0}
                         title={book.title}
                         author={book.author_name} 
                         pages={book.number_of_pages_median}
