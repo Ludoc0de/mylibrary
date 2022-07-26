@@ -3,10 +3,10 @@ import { Context } from './Header'
 
 export default function AddBook(props){
     //create or get last id
-    const [id, setId]= useState(0)
+    const [id, setId]= useState(props.id)
     useEffect(() => {
         const data = localStorage.getItem('bookId')
-        setId(JSON.parse(data))
+        data === null ? setId(JSON.parse(props.id))  : setId(JSON.parse(data)) 
     }, [])
     
     useEffect(() => {
