@@ -1,5 +1,4 @@
 import React, {useState, useEffect, createContext} from "react"
-import debounce from "lodash.debounce"
 import AddBook from "./AddBook"
 export const Context = createContext();
 
@@ -9,7 +8,6 @@ export default function Header(){
     })
     const [buttonFind, setButtonFind]= useState(true)
     const [book, setBook]= useState([])
-    console.log(book)
     const [img, setImg]= useState([])
     const [spin, setSpin]= useState(false)
 
