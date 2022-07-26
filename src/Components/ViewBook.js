@@ -10,9 +10,9 @@ export default function ViewBook(props){
     }, [])
     console.log(delId)
 
-    // useEffect(() => {
-    //     localStorage.setItem('bookId', JSON.stringify(delId))
-    // }, [delId])
+    useEffect(() => {
+        localStorage.setItem('bookId', JSON.stringify(delId))
+    }, [delId])
     
     function deleteBook(id){
         //
