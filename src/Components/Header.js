@@ -20,9 +20,8 @@ export default function Header(){
 
     //search book on click
     async function findBook(){
-        //toggle onClick
-        setSpin(prevState => !prevState)
-        setButtonFind(prevState => !prevState)
+        //if input, setSpin
+        search.searchBook && setSpin(prevState => true)
         try{
             const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
             const dataBooks = await res.json()
@@ -46,8 +45,15 @@ export default function Header(){
         })
     }
 
-    //get cover img from book
+    //update state from spin/btn, get cover img from book
     useEffect(() => {
+        //if book data, update spin/btnFind state
+        if(book.title){
+            console.log('ok')
+            setSpin(prevState => false)
+            setButtonFind(prevState => false)
+        }
+
         async function addCover(){
             try{
                 const res = await fetch(`https://covers.openlibrary.org/b/olid/${book.cover_edition_key}.jpg`)
@@ -65,9 +71,7 @@ export default function Header(){
         event.preventDefault()
     }
 
-    //spin till data rdy
-    /*spin will stop, when get data from book, use useEffect*/
-    /*addbook will pop */
+    /* fix position spinner */
 
 
     return(
