@@ -3,12 +3,12 @@ import DeleteBook from "./DeleteBook"
 
 export default function ViewBook(props){
     //get last id
-    // const [delId, setDelId]= useState("")
-    // console.log(delId)
-    // useEffect(() => {
-    //     const data = localStorage.getItem('bookId')
-    //     setDelId(JSON.parse(data))
-    // }, [])
+    const [delId, setDelId]= useState("")
+    useEffect(() => {
+        const data = localStorage.getItem('bookId')
+        setDelId(JSON.parse(data))
+    }, [])
+    console.log(delId)
 
     // useEffect(() => {
     //     localStorage.setItem('bookId', JSON.stringify(delId))
