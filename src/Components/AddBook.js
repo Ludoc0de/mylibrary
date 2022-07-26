@@ -2,11 +2,11 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Context } from './Header'
 
 export default function AddBook(props){
-    //create or get last id
+    //create default id or get last one
     const [id, setId]= useState(props.id)
     useEffect(() => {
         const data = localStorage.getItem('bookId')
-        data === null ? setId(JSON.parse(props.id))  : setId(JSON.parse(data)) 
+        data === null ? setId(JSON.parse(props.id)) : setId(JSON.parse(data)) 
     }, [])
     
     useEffect(() => {
