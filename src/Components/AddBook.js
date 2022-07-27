@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Context } from './Header'
 
 export default function AddBook(props){
+    console.log(props)
     // //create default id or get last one
     // const [id, setId]= useState(props.id)
     // useEffect(() => {
@@ -24,11 +25,11 @@ export default function AddBook(props){
         //toggle onClick  
         setButtonFind(prevState => !prevState)
         //increase id on click
-        setId(prevState => prevState + 1)
+        // setId(prevState => prevState + 1)
         //get data from local, creat a var with props data to push
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         const putBook = {
-            id: id,
+            id: props.id,
             name: props.author[0],
             title: props.title,
             pages: props.pages,
