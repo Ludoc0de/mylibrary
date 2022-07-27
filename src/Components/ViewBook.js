@@ -3,21 +3,19 @@ import DeleteBook from "./DeleteBook"
 
 export default function ViewBook(props){
     //get last id
-    const [delId, setDelId]= useState("")
-    useEffect(() => {
-        const data = localStorage.getItem('bookId')
-        setDelId(JSON.parse(data))
-    }, [])
-    console.log(delId)
+    // console.log(props)
+    // const [delId, setDelId]= useState(props.id)
+    // useEffect(() => {
+    //     const test = localStorage.getItem('bookId')
+    //     setDelId(JSON.parse(test))
+    // }, [])
+    // console.log(delId)
 
-    useEffect(() => {
-        localStorage.setItem('bookId', JSON.stringify(delId))
-    }, [delId])
+    // useEffect(() => {
+    //     localStorage.setItem('bookId', JSON.stringify(delId))
+    // }, [delId])
     
     function deleteBook(id){
-        //
-        // setDelId(prevState => prevState - 1)
-
         //
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         let booksArray = books.map(array => array.id)
@@ -25,6 +23,9 @@ export default function ViewBook(props){
         books.splice(index, 1);
         localStorage.setItem("books", JSON.stringify(books))
         // window.location.reload();
+
+        //
+        //setDelId(prevState => prevState - 1)
     }
 
     return(
