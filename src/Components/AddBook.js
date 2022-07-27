@@ -2,16 +2,16 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Context } from './Header'
 
 export default function AddBook(props){
-    //create default id or get last one
-    const [id, setId]= useState(props.id)
-    useEffect(() => {
-        const data = localStorage.getItem('bookId')
-        data === null ? setId(JSON.parse(props.id)) : setId(JSON.parse(data)) 
-    }, [])
+    // //create default id or get last one
+    // const [id, setId]= useState(props.id)
+    // useEffect(() => {
+    //     const data = localStorage.getItem('bookId')
+    //     data === null ? setId(JSON.parse(props.id)) : setId(JSON.parse(data)) 
+    // }, [])
     
-    useEffect(() => {
-        localStorage.setItem('bookId', JSON.stringify(id))
-    }, [id])
+    // useEffect(() => {
+    //     localStorage.setItem('bookId', JSON.stringify(id))
+    // }, [id])
 
     //get the state from Header
     const [buttonFind, setButtonFind] = useContext(Context)
