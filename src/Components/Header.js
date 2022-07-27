@@ -11,6 +11,17 @@ export default function Header(){
     const [img, setImg]= useState([])
     const [spin, setSpin]= useState(false)
 
+    //create default id or get last one
+    const [bookId, setBookId]= useState(0)
+    useEffect(() => {
+        const data = localStorage.getItem('bookId')
+        data === null ? setBookId(JSON.parse(0)) : setBookId(JSON.parse(data)) 
+    }, [])
+    
+    useEffect(() => {
+        localStorage.setItem('bookId', JSON.stringify(bookId))
+    }, [bookId])
+
     //add || remove btn on click 
     const styles= {
         display: buttonFind ? "inline" : "none"
@@ -101,7 +112,7 @@ export default function Header(){
 
                 <Context.Provider value={[buttonFind, setButtonFind]}>
                     <AddBook 
-                        id={0}
+                        id={bookId}
                         title={book.title}
                         author={book.author_name} 
                         pages={book.number_of_pages_median}
