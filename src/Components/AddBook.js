@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { Context } from './Header'
+import { ButtonFindContext } from './Header'
 
 export default function AddBook(props){
     console.log(props)
@@ -14,8 +14,8 @@ export default function AddBook(props){
     //     localStorage.setItem('bookId', JSON.stringify(id))
     // }, [id])
 
-    //get the state from Header
-    const [buttonFind, setButtonFind] = useContext(Context)
+    //get the state buttonFind from Header
+    const [buttonFind, setButtonFind] = useContext(ButtonFindContext)
 
     const styles= {
         display: buttonFind ? "none" : "inline"

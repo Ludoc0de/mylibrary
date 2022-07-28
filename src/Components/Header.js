@@ -1,6 +1,6 @@
 import React, {useState, useEffect, createContext} from "react"
 import AddBook from "./AddBook"
-export const Context = createContext();
+export const ButtonFindContext = createContext();
 
 export default function Header(){
     const [search, setSearch]=useState({
@@ -110,7 +110,7 @@ export default function Header(){
                     value={search.searchBook}
                 />
 
-                <Context.Provider value={[buttonFind, setButtonFind]}>
+                <ButtonFindContext.Provider value={[buttonFind, setButtonFind]}>
                     <AddBook 
                         id={bookId}
                         title={book.title}
@@ -121,7 +121,7 @@ export default function Header(){
                         publisher={book.publisher}
                         cover={img}
                     />
-                </Context.Provider>
+                </ButtonFindContext.Provider>
                 <button 
                 className="form__button form__button_color"
                 onClick={findBook}
