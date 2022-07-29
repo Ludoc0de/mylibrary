@@ -3,10 +3,16 @@ import { ButtonFindContext } from './Header'
 
 export default function AddBook(props){
     console.log(props)
+    /*increase books.id */ 
+    const test = JSON.parse(localStorage.getItem('books'))
+    console.log(test[0].id)
+
     //get default id or get last one
     const [bookId, setBookId]= useState(props.id)
+    console.log(bookId)
     useEffect(() => {
         const data = localStorage.getItem('bookId')
+        console.log(data)
         data === null ? setBookId(JSON.parse(props.id)) : setBookId(JSON.parse(data)) 
     }, [])
     
@@ -29,7 +35,7 @@ export default function AddBook(props){
         //get data from local, creat a var with props data to push
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         const putBook = {
-            id: bookId,
+            id: props.id+1,
             name: props.author[0],
             title: props.title,
             pages: props.pages,
