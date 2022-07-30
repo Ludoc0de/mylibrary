@@ -35,7 +35,8 @@ export default function AddBook(props){
     return (
         <button 
             className="form__button form__button_color"
-            onClick={bookStorage}
+            //if find book, launch bookStorage
+            onClick={props.title && bookStorage}
             style={styles}
         >
             Add book
