@@ -43,11 +43,13 @@ export default function Header(){
     }
 
     function keyBoard(event){
-        const keyName = event.key
-        //launch findBook if Enter keyBoard
-        if(keyName === 'Enter'){
-            console.log("yes enter")
-            findBook()
+        if(search.searchBook){
+             const keyName = event.key
+            //launch findBook if Enter keyBoard
+            if(keyName === 'Enter'){
+                console.log("yes enter")
+                findBook()
+            }
         }
     }
 
@@ -95,8 +97,8 @@ export default function Header(){
                 </span>
                 {
                     !search.searchBook ? 
-                        <label for="searchBook">What's your book?</label>:
-                        <label for="searchBook">Is it {search.searchBook}? Add it!</label>
+                        <label htmlFor="searchBook">What's your book?</label>:
+                        <label htmlFor="searchBook">Is it {search.searchBook}? Add it!</label>
                 }
                 <input 
                     className="form__input form__input_color"
@@ -105,7 +107,7 @@ export default function Header(){
                     placeholder="search book: title, author, isbn"
                     onChange={handleChange}
                     //if input, launch keyBoard
-                    onKeyDown={search.searchBook && keyBoard}
+                    onKeyDown={keyBoard}
                     value={search.searchBook}
                 />
 
