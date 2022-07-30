@@ -2,23 +2,18 @@ import React, { useContext, useState, useEffect } from 'react'
 import { ButtonFindContext } from './Header'
 
 export default function AddBook(props){
-    console.log(props)
-    /*increase books.id */ 
-    const test = JSON.parse(localStorage.getItem('books'))
-    console.log(test[0].id)
-
     //get default id or get last one
-    const [bookId, setBookId]= useState(props.id)
-    console.log(bookId)
-    useEffect(() => {
-        const data = localStorage.getItem('bookId')
-        console.log(data)
-        data === null ? setBookId(JSON.parse(props.id)) : setBookId(JSON.parse(data)) 
-    }, [])
+    // const [bookId, setBookId]= useState(props.id)
+    // console.log(bookId)
+    // useEffect(() => {
+    //     const data = localStorage.getItem('bookId')
+    //     console.log(data)
+    //     data === null ? setBookId(JSON.parse(props.id)) : setBookId(JSON.parse(data)) 
+    // }, [])
     
-    useEffect(() => {
-        localStorage.setItem('bookId', JSON.stringify(bookId))
-    }, [bookId])
+    // useEffect(() => {
+    //     localStorage.setItem('bookId', JSON.stringify(bookId))
+    // }, [bookId])
 
     //get the state buttonFind from Header
     const [buttonFind, setButtonFind] = useContext(ButtonFindContext)
@@ -30,12 +25,14 @@ export default function AddBook(props){
     function bookStorage(){  
         //toggle onClick  
         setButtonFind(prevState => !prevState)
+
         //increase bookId on click
-        setBookId(prevState => prevState + 1)
+        //setBookId(prevState => prevState + 1)
+
         //get data from local, creat a var with props data to push
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         const putBook = {
-            id: props.id+1,
+            id: props.id,
             name: props.author[0],
             title: props.title,
             pages: props.pages,
