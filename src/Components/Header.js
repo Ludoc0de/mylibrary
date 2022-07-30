@@ -43,13 +43,11 @@ export default function Header(){
     }
 
     function keyBoard(event){
-        if(search.searchBook){
-             const keyName = event.key
-            //launch findBook if Enter keyBoard
-            if(keyName === 'Enter'){
-                console.log("yes enter")
-                findBook()
-            }
+        const keyName = event.key
+        //launch findBook if Enter keyBoard
+        if(keyName === 'Enter'){
+            console.log("yes enter")
+            findBook()
         }
     }
 
@@ -107,7 +105,7 @@ export default function Header(){
                     placeholder="search book: title, author, isbn"
                     onChange={handleChange}
                     //if input, launch keyBoard
-                    onKeyDown={keyBoard}
+                    onKeyDown={search.searchBook ? keyBoard : null}
                     value={search.searchBook}
                 />
 
