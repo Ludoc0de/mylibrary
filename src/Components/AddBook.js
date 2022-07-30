@@ -34,9 +34,9 @@ export default function AddBook(props){
         //get the last id and increase onClick
         const booksId = books.map(array => array.id)
         const bookId = booksId[booksId.length-1]+1
-
         const putBook = {
-            id: props.id,
+            //putBook.id = 0 if undef 
+            id: booksId.length > 0 ? bookId : props.id,
             name: props.author[0],
             title: props.title,
             pages: props.pages,
