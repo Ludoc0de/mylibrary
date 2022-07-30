@@ -31,7 +31,6 @@ export default function Header(){
         catch(error){
             console.log(`error ${error}`)
         }
-
     }
     
     function handleChange(event){
@@ -41,6 +40,14 @@ export default function Header(){
                 [event.target.name]: event.target.value
             }
         })
+    }
+
+    function keyBoard(event){
+        const keyName = event.key
+        if(keyName === 'Enter'){
+            console.log("yes enter")
+            findBook()
+        }
     }
 
     //update state from spin/btn, get cover img from book
@@ -96,6 +103,7 @@ export default function Header(){
                     name="searchBook"
                     placeholder="search book: title, author, isbn"
                     onChange={handleChange}
+                    onKeyDown={keyBoard}
                     value={search.searchBook}
                 />
 
@@ -112,9 +120,9 @@ export default function Header(){
                     />
                 </ButtonFindContext.Provider>
                 <button 
-                className="form__button form__button_color"
-                onClick={findBook}
-                style={styles}
+                    className="form__button form__button_color"
+                    onClick={findBook}
+                    style={styles}
                 >
                     find book
                 </button>
