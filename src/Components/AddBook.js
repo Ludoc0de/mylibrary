@@ -2,22 +2,8 @@ import React, { useContext, useState, useEffect } from 'react'
 import { ButtonFindContext } from './Header'
 
 export default function AddBook(props){
-    //get default id or get last one
-    // const [bookId, setBookId]= useState(props.id)
-    // console.log(bookId)
-    // useEffect(() => {
-    //     const data = localStorage.getItem('bookId')
-    //     console.log(data)
-    //     data === null ? setBookId(JSON.parse(props.id)) : setBookId(JSON.parse(data)) 
-    // }, [])
-    
-    // useEffect(() => {
-    //     localStorage.setItem('bookId', JSON.stringify(bookId))
-    // }, [bookId])
-
     //get the state buttonFind from Header
     const [buttonFind, setButtonFind] = useContext(ButtonFindContext)
-
     const styles= {
         display: buttonFind ? "none" : "inline"
     }
@@ -25,10 +11,6 @@ export default function AddBook(props){
     function bookStorage(){  
         //toggle onClick  
         setButtonFind(prevState => !prevState)
-
-        //increase bookId on click
-        //setBookId(prevState => prevState + 1)
-
         //get data from local
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         //get the last id and increase onClick
