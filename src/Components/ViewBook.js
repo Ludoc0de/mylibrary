@@ -2,19 +2,6 @@ import React, { useState, useEffect } from 'react'
 import DeleteBook from "./DeleteBook"
 
 export default function ViewBook(props){
-    //get last id
-    // console.log(props)
-    // const [delId, setDelId]= useState(props.id)
-    // useEffect(() => {
-    //     const test = localStorage.getItem('bookId')
-    //     setDelId(JSON.parse(test))
-    // }, [])
-    // console.log(delId)
-
-    // useEffect(() => {
-    //     localStorage.setItem('bookId', JSON.stringify(delId))
-    // }, [delId])
-    
     function deleteBook(id){
         //
         const books = JSON.parse(localStorage.getItem("books") || "[]");
@@ -23,9 +10,6 @@ export default function ViewBook(props){
         books.splice(index, 1);
         localStorage.setItem("books", JSON.stringify(books))
         // window.location.reload();
-
-        //
-        //setDelId(prevState => prevState - 1)
     }
 
     return(
