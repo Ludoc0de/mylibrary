@@ -1,9 +1,9 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 //import AddBook from "./AddBook"
 import ViewBook from "./ViewBook"
 
 export default function Main(){
-    const [viewBooks, setViewBooks]= React.useState([])
+    const [viewBooks, setViewBooks]= useState([])
 
     //get all storage books
     const viewAllBooks = viewBooks.map(getStorageBooks => {
@@ -22,8 +22,8 @@ export default function Main(){
     })
 
     useEffect(()=> {
-        const viewBooks = JSON.parse(localStorage.getItem("books"))
-        viewBooks && setViewBooks(viewBooks)
+        const getBooks = JSON.parse(localStorage.getItem("books"))
+        getBooks && setViewBooks(getBooks)
     }, [])
 
     return(
