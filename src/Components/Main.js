@@ -17,6 +17,10 @@ export default function Main(){
                 publish_date={getStorageBooks.publish_date}
                 publisher={getStorageBooks.publisher}
                 cover={getStorageBooks.cover}
+                //props with callback function to setViewBooks
+                onDelete ={() => setViewBooks(
+                    prevState => JSON.parse(localStorage.getItem("books")))
+                }
             />
         )
     })
