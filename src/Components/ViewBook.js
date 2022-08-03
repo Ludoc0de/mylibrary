@@ -2,7 +2,6 @@ import DeleteBook from "./DeleteBook"
 
 export default function ViewBook(props){
     function deleteBook(id){
-        //
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         let booksArray = books.map(array => array.id)
         let index = booksArray.findIndex(bookIndex => bookIndex === id)
@@ -14,7 +13,7 @@ export default function ViewBook(props){
 
     return(
         <section className="main__section">
-            <img className="section__img" src={props.cover}/>
+            <img className="section__img" src={props.cover} alt="book cover"/>
             <div className="section__info">
                 <h2>{props.title}</h2>
                 <h3>{props.author}</h3>
