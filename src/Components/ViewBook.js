@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react'
 import DeleteBook from "./DeleteBook"
 
 export default function ViewBook(props){
@@ -9,7 +8,8 @@ export default function ViewBook(props){
         let index = booksArray.findIndex(bookIndex => bookIndex === id)
         books.splice(index, 1);
         localStorage.setItem("books", JSON.stringify(books))
-        // window.location.reload();
+        //delete will call the props on Main
+        props.onDelete()
     }
 
     return(
