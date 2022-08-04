@@ -77,9 +77,6 @@ export default function Header(){
         event.preventDefault()
     }
 
-    /* fix position spinner */
-
-
     return(
         <header>
             <nav>
@@ -93,12 +90,12 @@ export default function Header(){
                         <circle className={spin ?"svg_filled" : null} cx="12.5" cy="12.5" r="10" pathLength="1"/>
                     </svg>
                 </span>
-                <label htmlFor="searchBook">Get your book</label>
+                <label htmlFor="searchBook">Search your book</label>
                 <input 
                     className="form__input form__input_color"
                     type="text" 
                     name="searchBook"
-                    placeholder="search book: title, author, isbn"
+                    placeholder="title, author, isbn"
                     onChange={handleChange}
                     //if input, launch keyBoard
                     onKeyDown={search.searchBook ? keyBoard : null}
