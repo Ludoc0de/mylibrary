@@ -93,11 +93,7 @@ export default function Header(){
                         <circle className={spin ?"svg_filled" : null} cx="12.5" cy="12.5" r="10" pathLength="1"/>
                     </svg>
                 </span>
-                {
-                    !search.searchBook ? 
-                        <label htmlFor="searchBook">What's your book?</label>:
-                        <label htmlFor="searchBook">Is it {search.searchBook}? Add it!</label>
-                }
+                <label htmlFor="searchBook">Get your book</label>
                 <input 
                     className="form__input form__input_color"
                     type="text" 
