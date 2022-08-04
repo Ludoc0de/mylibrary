@@ -1,4 +1,4 @@
-import React, {useState, useEffect, createContext} from "react"
+import React, {useState, createContext} from "react"
 import Header from "./Components/Header"
 import Hero from "./Components/Hero"
 import Main from "./Components/Main"
