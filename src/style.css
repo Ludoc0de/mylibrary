@@ -93,6 +93,48 @@ label {
     background-color: var(--grey-color);
 }
 
+/*spin*/
+svg {
+    position: relative;
+    top: 0.5em;
+    left: -0.5em;
+}
+
+.svg_background {
+    stroke:var(--grey-color);
+    stroke-width: 3;
+}
+
+.svg_filled {
+    stroke: var(--blue-color);
+    stroke-width: 3;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: anime 0.5s infinite linear;
+}
+
+@keyframes anime {
+    0% {
+        stroke-dashoffset: 1;
+    }
+
+    25% {
+        stroke-dashoffset: 0.75;
+    }
+
+    50% {
+        stroke-dashoffset: 0.5;
+    }
+
+    75% {
+        stroke-dashoffset: 0.25;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
 /*remove input arrow */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

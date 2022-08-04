@@ -1,51 +1,70 @@
-import React, {useCallback, useEffect} from "react"
-import debounce from "lodash.debounce"
+import React, {useState, useEffect, createContext} from "react"
 import AddBook from "./AddBook"
+export const ButtonFindContext = createContext();
 
 export default function Header(){
-    const [search, setSearch]=React.useState("")
-    const [saveValue, setSaveValue]=React.useState("")
-    const [book, setBook]= React.useState([])
-    console.log(book)
-    const [img, setImg]= React.useState([])
+    const [search, setSearch]=useState({
+        searchBook:""
+    })
+    const [buttonFind, setButtonFind]= useState(true)
+    const [book, setBook]= useState([])
+    const [img, setImg]= useState([])
+    const [spin, setSpin]= useState(false)
 
-    //get search from input value 
-    const debounceSave = useCallback(
-        debounce((nextValue) => setSaveValue(nextValue), 800),
-        []
-    )
-    
-    function handleChange(event){
-        const nextValue = event.target.value
-        setSearch(nextValue)
-        debounceSave(nextValue)
+    //add || remove btn on click 
+    const styles= {
+        display: buttonFind ? "inline" : "none"
     }
 
-    //get bookdata with search
-    useEffect(() => {
-        async function searchGetBook(){
-            try{
-                const res = await fetch(`http://openlibrary.org/search.json?q=${saveValue}`)
-                const dataBooks = await res.json()
-                const data = dataBooks.docs.shift(0)
-                if(data){
-                  setBook(data)  
-                }
-            }
-            catch(error){
-                console.log(`error ${error}`)
+    //search book on click
+    async function findBook(){
+        //if input, setSpin
+        search.searchBook && setSpin(prevState => true)
+        try{
+            const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
+            const dataBooks = await res.json()
+            const data = dataBooks.docs.shift(0)
+            if(data){
+                setBook(data) 
             }
         }
-        searchGetBook()
-    }, [saveValue])
+        catch(error){
+            console.log(`error ${error}`)
+        }
+    }
+    
+    function handleChange(event){
+        setSearch(prevState => {
+            return {
+                ...prevState,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
 
-    //get cover img from bookdata 
+    function keyBoard(event){
+        const keyName = event.key
+        //launch findBook if Enter keyBoard
+        if(keyName === 'Enter'){
+            console.log("yes enter")
+            findBook()
+        }
+    }
+
+    //update state from spin/btn, get cover img from book
     useEffect(() => {
+        //if book data, update spin/btnFind state
+        if(book.title){
+            setSpin(prevState => false)
+            setButtonFind(prevState => false)
+        }
+
         async function addCover(){
             try{
                 const res = await fetch(`https://covers.openlibrary.org/b/olid/${book.cover_edition_key}.jpg`)
                 const dataCover = await res.url
-                dataCover.match(/\/OL/) && setImg(dataCover)
+                //if link to img then setImg
+                dataCover.match(/\/OL/i) && setImg(dataCover)
             }
             catch(error){
                 console.log(`error ${error}`)
@@ -65,30 +84,43 @@ export default function Header(){
                 <a className="nav__link" href="#">Get started</a>
             </nav>
             <form onSubmit={handleSubmit}>
-                {
-                    !saveValue ? 
-                        <label for="searchBook">What's your book?</label>:
-                        <label for="searchBook">Is it {saveValue}? Add it!</label>
-                }
+                <label htmlFor="searchBook">Search your book</label>
+                 <span className='form__spin'>
+                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle className="svg_background"cx="12.5" cy="12.5" r="10"/>
+                        <circle className={spin ?"svg_filled" : null} cx="12.5" cy="12.5" r="10" pathLength="1"/>
+                    </svg>
+                </span>
                 <input 
                     className="form__input form__input_color"
                     type="text" 
                     name="searchBook"
-                    placeholder="search book: title, author, isbn"
-                    value={search}
+                    placeholder="title, author, isbn"
                     onChange={handleChange}
+                    //if input, launch keyBoard
+                    onKeyDown={search.searchBook ? keyBoard : null}
+                    value={search.searchBook}
                 />
-                <AddBook 
-                    key={book.id}
-                    id={book.id}
-                    title={book.title}
-                    author={book.author_name} 
-                    pages={book.number_of_pages_median}
-                    publish_date={book.first_publish_year}
-                    //synopsis={book.first_sentence}
-                    publisher={book.publisher}
-                    cover={img}
-                />
+
+                <ButtonFindContext.Provider value={[buttonFind, setButtonFind]}>
+                    <AddBook 
+                        id={0}
+                        title={book.title}
+                        author={book.author_name} 
+                        pages={book.number_of_pages_median}
+                        publish_date={book.first_publish_year}
+                        //synopsis={book.first_sentence}
+                        publisher={book.publisher}
+                        cover={img}
+                    />
+                </ButtonFindContext.Provider>
+                <button 
+                    className="form__button form__button_color"
+                    onClick={findBook}
+                    style={styles}
+                >
+                    find book
+                </button>
             </form>
         </header>
     )

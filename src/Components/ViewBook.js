@@ -1,4 +1,3 @@
-import React from "react"
 import DeleteBook from "./DeleteBook"
 
 export default function ViewBook(props){
@@ -8,12 +7,13 @@ export default function ViewBook(props){
         let index = booksArray.findIndex(bookIndex => bookIndex === id)
         books.splice(index, 1);
         localStorage.setItem("books", JSON.stringify(books))
-        window.location.reload();
+        //delete will call the props on Main
+        props.onDelete()
     }
 
     return(
         <section className="main__section">
-            <img className="section__img" src={props.cover}/>
+            <img className="section__img" src={props.cover} alt="book cover"/>
             <div className="section__info">
                 <h2>{props.title}</h2>
                 <h3>{props.author}</h3>

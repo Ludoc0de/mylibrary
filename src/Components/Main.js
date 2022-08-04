@@ -1,9 +1,11 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 //import AddBook from "./AddBook"
 import ViewBook from "./ViewBook"
+import { getBooksNumberContext } from '../App'
 
 export default function Main(){
-    const [viewBooks, setViewBooks]= React.useState([])
+    const [viewBooks, setViewBooks]= useState([])
+    const [booksNumber, setBooksNumber]= useContext(getBooksNumberContext)
 
     //get all storage books
     const viewAllBooks = viewBooks.map(getStorageBooks => {
@@ -17,14 +19,18 @@ export default function Main(){
                 publish_date={getStorageBooks.publish_date}
                 publisher={getStorageBooks.publisher}
                 cover={getStorageBooks.cover}
+                //props with callback function to setViewBooks
+                onDelete ={() => setViewBooks(
+                    prevState => JSON.parse(localStorage.getItem("books")))
+                }
             />
         )
     })
 
     useEffect(()=> {
-        const viewBooks = JSON.parse(localStorage.getItem("books"))
-        viewBooks && setViewBooks(viewBooks)
-    }, [])
+        const getBooks = JSON.parse(localStorage.getItem("books"))
+        getBooks && setViewBooks(getBooks)
+    }, [booksNumber])
 
     return(
         <main>
