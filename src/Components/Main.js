@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 //import AddBook from "./AddBook"
 import ViewBook from "./ViewBook"
+import { getBooksNumberContext } from '../App'
 
 export default function Main(){
     const [viewBooks, setViewBooks]= useState([])
+    const [booksNumber, setBooksNumber]= useContext(getBooksNumberContext)
 
     //get all storage books
     const viewAllBooks = viewBooks.map(getStorageBooks => {
@@ -28,7 +30,7 @@ export default function Main(){
     useEffect(()=> {
         const getBooks = JSON.parse(localStorage.getItem("books"))
         getBooks && setViewBooks(getBooks)
-    }, [])
+    }, [booksNumber])
 
     return(
         <main>
