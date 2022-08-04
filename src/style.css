@@ -94,18 +94,18 @@ label {
 }
 
 /*spin*/
-svg {
+.svg__spin {
     position: relative;
     top: 0.5em;
     left: 3.5em;
 }
 
-.svg_background {
+.svg__background {
     stroke:var(--grey-color);
     stroke-width: 3;
 }
 
-.svg_filled {
+.svg__filled {
     stroke: var(--blue-color);
     stroke-width: 3;
     stroke-dasharray: 1;
@@ -216,6 +216,10 @@ input[type=number] {
     border-radius: 0.5em;
     width: 8em;
     height: 12em;
+}
+
+.section__info {
+    padding-top: 1em;
 }
 
 .info__ul {

@@ -85,10 +85,10 @@ export default function Header(){
             </nav>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="searchBook">Search your book</label>
-                 <span className='form__spin'>
-                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle className="svg_background"cx="12.5" cy="12.5" r="10"/>
-                        <circle className={spin ?"svg_filled" : null} cx="12.5" cy="12.5" r="10" pathLength="1"/>
+                 <span>
+                    <svg className="svg__spin" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle className="svg__background" cx="12.5" cy="12.5" r="10"/>
+                        <circle className={spin ?"svg__filled" : null} cx="12.5" cy="12.5" r="10" pathLength="1"/>
                     </svg>
                 </span>
                 <input 
