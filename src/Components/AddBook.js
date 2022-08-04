@@ -1,7 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { ButtonFindContext } from './Header'
+import { getBooksNumberContext } from '../App'
 
 export default function AddBook(props){
+    //get the state booksNumber from App
+    const [booksNumber, setBooksNumber]= useContext(getBooksNumberContext)
     //get the state buttonFind from Header
     const [buttonFind, setButtonFind] = useContext(ButtonFindContext)
     const styles= {
@@ -28,8 +31,9 @@ export default function AddBook(props){
             count: 1
         }
         books.push(putBook);
-        localStorage.setItem("books", JSON.stringify(books)); 
-
+        localStorage.setItem("books", JSON.stringify(books));
+        //setBooksNumber after add a book 
+        setBooksNumber(prevState => JSON.parse(localStorage.getItem("books")).length)
     }
 
     return (
