@@ -6,14 +6,18 @@ export default function AddBook(props){
     //get the state booksNumber from App
     const [booksNumber, setBooksNumber]= useContext(getBooksNumberContext)
     //get the state buttonFind from Header
-    const [buttonFind, setButtonFind] = useContext(ButtonFindContext)
-    const styles= {
-        display: buttonFind ? "none" : "inline"
-    }
+    // const [buttonFind, setButtonFind] = useContext(ButtonFindContext)
+    // const styles= {
+    //     display: buttonFind ? "none" : "inline"
+    // }
 
     function bookStorage(){  
+        //
+        console.log("add book")
+        //
         //toggle onClick  
-        setButtonFind(prevState => !prevState)
+        // setButtonFind(prevState => !prevState)
+
         //get data from local
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         //get the last id and increase onClick
@@ -38,10 +42,10 @@ export default function AddBook(props){
 
     return (
         <button 
-            className="form__button form__button_color"
+            className="form__button form__button_color form__button_add"
             //if find book, launch bookStorage
             onClick={props.title ? bookStorage : null}
-            style={styles}
+            // style={styles}
         >
             Add book
         </button>

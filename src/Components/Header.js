@@ -6,18 +6,21 @@ export default function Header(){
     const [search, setSearch]=useState({
         searchBook:""
     })
-    const [buttonFind, setButtonFind]= useState(true)
+    // const [buttonFind, setButtonFind]= useState(false)
     const [book, setBook]= useState([])
     const [img, setImg]= useState([])
     const [spin, setSpin]= useState(false)
 
     //add || remove btn on click 
     const styles= {
-        display: buttonFind ? "inline" : "none"
+        // display: buttonFind ? "inline" : "none"
     }
 
     //search book on click
     async function findBook(){
+        //
+        console.log("find")
+        //
         //if input, setSpin
         search.searchBook && setSpin(prevState => true)
         try{
@@ -42,21 +45,21 @@ export default function Header(){
         })
     }
 
-    function keyBoard(event){
-        const keyName = event.key
-        //launch findBook if Enter keyBoard
-        if(keyName === 'Enter'){
-            console.log("yes enter")
-            findBook()
-        }
-    }
+    // function keyBoard(event){
+    //     const keyName = event.key
+    //     //launch findBook if Enter keyBoard
+    //     if(keyName === 'Enter'){
+    //         console.log("yes enter")
+    //         findBook()
+    //     }
+    // }
 
     //update state from spin/btn, get cover img from book
     useEffect(() => {
         //if book data, update spin/btnFind state
         if(book.title){
             setSpin(prevState => false)
-            setButtonFind(prevState => false)
+            // setButtonFind(prevState => false)
         }
 
         async function addCover(){
@@ -98,11 +101,11 @@ export default function Header(){
                     placeholder="title, author, isbn"
                     onChange={handleChange}
                     //if input, launch keyBoard
-                    onKeyDown={search.searchBook ? keyBoard : null}
+                    // onKeyDown={search.searchBook ? keyBoard : null}
                     value={search.searchBook}
                 />
 
-                <ButtonFindContext.Provider value={[buttonFind, setButtonFind]}>
+                {/* <ButtonFindContext.Provider value={[buttonFind, setButtonFind]}> */}
                     <AddBook 
                         id={0}
                         title={book.title}
@@ -113,11 +116,11 @@ export default function Header(){
                         publisher={book.publisher}
                         cover={img}
                     />
-                </ButtonFindContext.Provider>
+                {/* </ButtonFindContext.Provider> */}
                 <button 
-                    className="form__button form__button_color"
+                    className="form__button form__button_color form__button_find"
                     onClick={findBook}
-                    style={styles}
+                    // style={styles}
                 >
                     find book
                 </button>
