@@ -157,6 +157,10 @@ input[type=number] {
     cursor:pointer;
 }
 
+form__button_find{
+
+}
+
 .form__button_color {
     background-color: var(--blue-color);
     color: var(--grey-color);
