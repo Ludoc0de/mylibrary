@@ -6,8 +6,10 @@ export default function Header(){
     const [search, setSearch]=useState({
         searchBook:""
     })
+    console.log(search)
     // const [buttonFind, setButtonFind]= useState(false)
     const [book, setBook]= useState([])
+    console.log(book)
     const [img, setImg]= useState([])
     const [spin, setSpin]= useState(false)
 
@@ -45,14 +47,23 @@ export default function Header(){
         })
     }
 
-    // function keyBoard(event){
-    //     const keyName = event.key
-    //     //launch findBook if Enter keyBoard
-    //     if(keyName === 'Enter'){
-    //         console.log("yes enter")
-    //         findBook()
-    //     }
-    // }
+    function keyBoard(event){
+        const keyName = event.key
+        //launch findBook if Enter keyBoard
+        if(keyName === 'Enter'){
+            findBook()
+        }
+    }
+    /*
+      function keyBoard(event){
+        const keyName = event.key
+        //Disable Enter keyBoard
+        if(keyName === 'Enter'){
+            event.preventDefault()
+            return false
+        }
+    }
+    */
 
     //update state from spin/btn, get cover img from book
     useEffect(() => {
@@ -101,7 +112,7 @@ export default function Header(){
                     placeholder="title, author, isbn"
                     onChange={handleChange}
                     //if input, launch keyBoard
-                    // onKeyDown={search.searchBook ? keyBoard : null}
+                    onKeyDown={search.searchBook ? keyBoard : null}
                     value={search.searchBook}
                 />
 
@@ -115,15 +126,16 @@ export default function Header(){
                         //synopsis={book.first_sentence}
                         publisher={book.publisher}
                         cover={img}
+                        spin={spin}
                     />
                 {/* </ButtonFindContext.Provider> */}
-                <button 
+                {/* <button 
                     className="form__button form__button_color form__button_find"
                     onClick={findBook}
                     // style={styles}
                 >
                     find book
-                </button>
+                </button> */}
             </form>
         </header>
     )
