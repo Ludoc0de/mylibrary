@@ -85,8 +85,6 @@ label {
     height: 2.2em;
     width: 20em;
     padding-left: 1em;
-    position: relative;
-    left: 5em;
 }
 
 .form__input_color {
