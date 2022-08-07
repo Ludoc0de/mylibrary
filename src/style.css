@@ -85,6 +85,8 @@ label {
     height: 2.2em;
     width: 20em;
     padding-left: 1em;
+    position: relative;
+    left: 10em;
 }
 
 .form__input_color {
@@ -151,12 +153,21 @@ input[type=number] {
     border-radius: 0 1em 1em 0;
     height: 2.2em;
     width: 5em;
-    position: relative;
     cursor:pointer;
 }
 
-form__button_find{
+.form__button_find {
+    left: 5em;
+    position: relative;
+    /* top: 1em; */
+    z-index: 10;
 
+}
+
+.form__button_add {
+    position: relative;
+    /* right: 5em; */
+    /* top: 1em; */
 }
 
 .form__button_color {
