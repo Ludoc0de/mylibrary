@@ -150,9 +150,6 @@ input[type=number] {
 
 .form__button {
     border: none;
-    border-radius: 0 1em 1em 0;
-    height: 2.2em;
-    width: 5em;
     cursor: pointer;
 }
 
@@ -163,11 +160,12 @@ input[type=number] {
 
 .form__button_add {
     position: relative;
-    right: 10em;
+    top: 0.5em;
+    right: 2.5em;
 }
 
 .form__button_color {
-    background-color: var(--blue-color);
+    background-color: transparent;
     color: var(--grey-color);
 }
 
