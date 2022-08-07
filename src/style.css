@@ -160,15 +160,13 @@ input[type=number] {
 }
 
 .form__button_find {
-    left: 5em;
     position: relative;
-    /* top: 1em; */
+    right: 5em;
 }
 
 .form__button_add {
     position: relative;
-    /* right: 5em; */
-    /* top: 1em; */
+    right: 10em;
 }
 
 .form__button_color {
