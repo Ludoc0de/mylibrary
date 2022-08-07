@@ -76,7 +76,7 @@ nav {
 }
 
 label {
-    margin-right: -3em;
+    margin-right: 1em;
 }
 
 .form__input {
@@ -95,7 +95,7 @@ label {
 .svg__spin {
     position: relative;
     top: 0.5em;
-    left: 3.5em;
+    right: 0.5em;
 }
 
 .svg__background {
