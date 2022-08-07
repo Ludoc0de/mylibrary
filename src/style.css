@@ -81,11 +81,6 @@ label {
     margin-right: 1em;
 }
 
-form {
-    position: relative;
-    left: 8.2em;
-}
-
 .form__input {
     border: none;
     border-radius: 1em;
