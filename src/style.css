@@ -100,7 +100,7 @@ form {
 .svg__spin {
     position: relative;
     top: 0.5em;
-    left: 8em;
+    right: 0.5em;
 }
 
 .svg__background {
