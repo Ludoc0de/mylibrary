@@ -64,7 +64,9 @@ nav {
     justify-content: space-between;
 }
 
-.nav__title, .nav__link, label {
+.nav__title,
+.nav__link,
+label {
     font-size: 1em;
 }
 
@@ -104,7 +106,7 @@ form {
 }
 
 .svg__background {
-    stroke:var(--grey-color);
+    stroke: var(--grey-color);
     stroke-width: 3;
 }
 
@@ -156,7 +158,7 @@ input[type=number] {
     border-radius: 0 1em 1em 0;
     height: 2.2em;
     width: 5em;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .form__button_find {
@@ -182,7 +184,8 @@ input[type=number] {
     margin: 4em 0 13em 0;
 }
 
-.hero__image, .hero--text__container{
+.hero__image,
+.hero--text__container {
     width: 36em;
 }
 
@@ -194,18 +197,18 @@ input[type=number] {
     font-size: 4em;
 }
 
-.hero__title > b {
+.hero__title>b {
     color: #5081E8;
 }
 
-.hero__text{
+.hero__text {
     font-size: 1.3em;
     letter-spacing: 2px;
     text-align: justify;
 }
 
 /*main*/
-.main__container-section{
+.main__container-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -214,7 +217,7 @@ input[type=number] {
 .main__section {
     display: flex;
     justify-content: space-around;
-    align-items:center;
+    align-items: center;
     background-color: var(--white-color);
     box-shadow: 0.1em 0.1em 1em #2D272C;
     border-radius: 0.5em;
@@ -223,7 +226,7 @@ input[type=number] {
     margin-bottom: 2em;
 }
 
-.section__img{
+.section__img {
     background-color: var(--blue-color);
     border-radius: 0.5em;
     width: 8em;
@@ -246,11 +249,11 @@ input[type=number] {
 }
 
 .section__button {
-    position:relative;
+    position: relative;
     left: 22em;
     border: none;
     background: none;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .svg__path {
@@ -258,9 +261,9 @@ input[type=number] {
 }
 
 .delete__button_text {
-    position:relative;
-    bottom:2.5em;
-    left:1em;
+    position: relative;
+    bottom: 2.5em;
+    left: 1em;
     font-size: medium;
     color: var(--blue-color);
 }
