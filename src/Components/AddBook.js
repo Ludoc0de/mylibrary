@@ -7,9 +7,8 @@ export default function AddBook(props){
     let title = props.title
     // if title, u can add book
     useEffect(() => {
-        if(title){
-            setButtonAdd(true)
-        }
+        console.log("title")
+        title ? setButtonAdd(true) : setButtonAdd(false)
     },[title])
 
     const styles= {
