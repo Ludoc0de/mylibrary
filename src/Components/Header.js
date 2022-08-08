@@ -6,17 +6,10 @@ export default function Header(){
     const [search, setSearch]=useState({
         searchBook:""
     })
-    console.log(search)
-    // const [buttonFind, setButtonFind]= useState(false)
     const [book, setBook]= useState([])
-    console.log(book)
     const [img, setImg]= useState([])
     const [spin, setSpin]= useState(false)
-
-    //add || remove btn on click 
-    const styles= {
-        // display: buttonFind ? "inline" : "none"
-    }
+    const [find, setFind]= useState(false)
 
     //search book on click
     async function findBook(){
@@ -25,6 +18,8 @@ export default function Header(){
         //
         //if input, setSpin
         search.searchBook && setSpin(prevState => true)
+        //update find boolean
+        setFind(prevState => true)
         try{
             const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
             const dataBooks = await res.json()
@@ -46,24 +41,19 @@ export default function Header(){
             }
         })
     }
-
+    
     function keyBoard(event){
         const keyName = event.key
-        //launch findBook if Enter keyBoard
-        if(keyName === 'Enter'){
-            findBook()
+        //launch findBook if Enter keyBoard && find its false
+        if(find){
+            if(keyName === 'Enter'){
+                event.preventDefault()
+                return false
+            }
+        } else {
+            keyName === 'Enter' && findBook()
         }
     }
-    /*
-      function keyBoard(event){
-        const keyName = event.key
-        //Disable Enter keyBoard
-        if(keyName === 'Enter'){
-            event.preventDefault()
-            return false
-        }
-    }
-    */
 
     //update state from spin/btn, get cover img from book
     useEffect(() => {
@@ -129,13 +119,6 @@ export default function Header(){
                         spin={spin}
                     />
                 {/* </ButtonFindContext.Provider> */}
-                {/* <button 
-                    className="form__button form__button_color form__button_find"
-                    onClick={findBook}
-                    // style={styles}
-                >
-                    find book
-                </button> */}
             </form>
         </header>
     )
