@@ -177,7 +177,7 @@ input[type=number] {
     position: relative;
     top: 0.25em;
     left: 2.5em;
-    transition: opacity 0.7s;
+    transition: opacity 0.5s;
     transition-timing-function: linear;
 }
 
