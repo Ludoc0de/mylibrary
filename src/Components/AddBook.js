@@ -15,6 +15,7 @@ export default function AddBook(props){
     const styles= {
         zIndex: buttonAdd ? 2 : -1,
         opacity: buttonAdd ? 1 : 0,
+        transition: 0.7+'s'
     }
 
 
