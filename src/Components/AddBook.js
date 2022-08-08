@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { ButtonFindContext } from './Header'
+import { findContext } from './Header'
 import { getBooksNumberContext } from '../App'
 
 export default function AddBook(props){
@@ -20,10 +20,13 @@ export default function AddBook(props){
 
     //get the state booksNumber from App
     const [booksNumber, setBooksNumber]= useContext(getBooksNumberContext)
-
+    // get the state buttonFind from Header
+    const [find, setFind] = useContext(findContext)
     function bookStorage(){  
+        console.log('add')
         //toggle onClick  
         setButtonAdd(prevState => !prevState)
+        setFind(prevState => false)
         //get data from local
         const books = JSON.parse(localStorage.getItem("books") || "[]");
         //get the last id and increase onClick
