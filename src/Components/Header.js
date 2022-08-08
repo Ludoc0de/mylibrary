@@ -6,7 +6,9 @@ export default function Header(){
     const [search, setSearch]=useState({
         searchBook:""
     })
+    console.log(search)
     const [book, setBook]= useState([])
+    console.log(book)
     const [img, setImg]= useState([])
     const [spin, setSpin]= useState(false)
     const [find, setFind]= useState(false)
@@ -23,6 +25,18 @@ export default function Header(){
         search.searchBook.length > 0 ? 
         setDelBtn(true) : setDelBtn(false)
     },[search.searchBook])
+
+    //remove the input value
+    function removeValue(event){
+        if(search.searchBook.length > 0) {
+            setSearch(prevState => {
+                return {
+                    ...prevState,
+                    searchBook:""
+                }
+            })
+        }
+    }
 
     //search book on click
     async function findBook(){
@@ -110,6 +124,7 @@ export default function Header(){
                 </span>
                 <button 
                 className="form__button form__button_color form__button_del"
+                onClick={removeValue}
                 style={styles}
                 >
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
