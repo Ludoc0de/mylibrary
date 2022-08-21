@@ -6,9 +6,7 @@ export default function Header(){
     const [search, setSearch]=useState({
         searchBook:""
     })
-    console.log(search)
     const [book, setBook]= useState([])
-    console.log(book)
     const [img, setImg]= useState([])
     const [spin, setSpin]= useState(false)
     const [find, setFind]= useState(false)
@@ -40,9 +38,6 @@ export default function Header(){
 
     //search book on click
     async function findBook(){
-        //
-        console.log("find")
-        //
         //if input, setSpin
         search.searchBook && setSpin(prevState => true)
         //update find boolean

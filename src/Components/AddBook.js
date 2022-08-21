@@ -7,7 +7,6 @@ export default function AddBook(props){
     let title = props.title
     // if title, u can add book
     useEffect(() => {
-        console.log("title")
         title ? setButtonAdd(true) : setButtonAdd(false)
     },[title])
 
@@ -23,7 +22,6 @@ export default function AddBook(props){
     // get the state buttonFind from Header
     const [find, setFind] = useContext(findContext)
     function bookStorage(){  
-        console.log('add')
         //toggle onClick  
         setButtonAdd(prevState => !prevState)
         setFind(prevState => false)
