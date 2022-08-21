@@ -64,7 +64,9 @@ nav {
     justify-content: space-between;
 }
 
-.nav__title, .nav__link, label {
+.nav__title,
+.nav__link,
+label {
     font-size: 1em;
 }
 
@@ -75,8 +77,9 @@ nav {
     margin-left: 4em;
 }
 
-label {
-    margin-right: -3em;
+form {
+    position: relative;
+    left: 2em;
 }
 
 .form__input {
@@ -84,9 +87,9 @@ label {
     border-radius: 1em;
     height: 2.2em;
     width: 20em;
-    padding-left: 1em;
-    position: relative;
-    left: 5em;
+    /* padding-left: 1em; */
+    padding-left: 3em;
+
 }
 
 .form__input_color {
@@ -94,18 +97,18 @@ label {
 }
 
 /*spin*/
-svg {
+.svg__spin {
     position: relative;
     top: 0.5em;
-    left: -0.5em;
+    left: 1em;
 }
 
-.svg_background {
-    stroke:var(--grey-color);
+.svg__background {
+    stroke: var(--grey-color);
     stroke-width: 3;
 }
 
-.svg_filled {
+.svg__filled {
     stroke: var(--blue-color);
     stroke-width: 3;
     stroke-dasharray: 1;
@@ -150,15 +153,32 @@ input[type=number] {
 
 .form__button {
     border: none;
-    border-radius: 0 1em 1em 0;
-    height: 2.2em;
-    width: 5em;
+    cursor: pointer;
+}
+
+.form__button_find {
     position: relative;
-    cursor:pointer;
+    right: 5em;
+}
+
+.form__button_add {
+    position: relative;
+    top: 0.5em;
+    right: 2.5em;
+    transition: opacity 0.7s;
+    transition-timing-function: linear;
+}
+
+.form__button_del {
+    position: relative;
+    top: 0.25em;
+    left: 2.5em;
+    transition: opacity 0.5s;
+    transition-timing-function: linear;
 }
 
 .form__button_color {
-    background-color: var(--blue-color);
+    background-color: transparent;
     color: var(--grey-color);
 }
 
@@ -170,12 +190,31 @@ input[type=number] {
     margin: 4em 0 13em 0;
 }
 
-.hero__image, .hero--text__container{
+.hero__image,
+.hero--text__container {
     width: 36em;
 }
 
+.hero--text__container {
+    margin-bottom: 8em;
+}
+
+.hero__title {
+    font-size: 4em;
+}
+
+.hero__title>b {
+    color: #5081E8;
+}
+
+.hero__text {
+    font-size: 1.3em;
+    letter-spacing: 2px;
+    text-align: justify;
+}
+
 /*main*/
-.main__container-section{
+.main__container-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -184,7 +223,7 @@ input[type=number] {
 .main__section {
     display: flex;
     justify-content: space-around;
-    align-items:center;
+    align-items: center;
     background-color: var(--white-color);
     box-shadow: 0.1em 0.1em 1em #2D272C;
     border-radius: 0.5em;
@@ -193,11 +232,15 @@ input[type=number] {
     margin-bottom: 2em;
 }
 
-.section__img{
+.section__img {
     background-color: var(--blue-color);
     border-radius: 0.5em;
     width: 8em;
     height: 12em;
+}
+
+.section__info {
+    padding-top: 1em;
 }
 
 .info__ul {
@@ -212,11 +255,11 @@ input[type=number] {
 }
 
 .section__button {
-    position:relative;
+    position: relative;
     left: 22em;
     border: none;
     background: none;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .svg__path {
@@ -224,9 +267,9 @@ input[type=number] {
 }
 
 .delete__button_text {
-    position:relative;
-    bottom:2.5em;
-    left:1em;
+    position: relative;
+    bottom: 2.5em;
+    left: 1em;
     font-size: medium;
     color: var(--blue-color);
 }
