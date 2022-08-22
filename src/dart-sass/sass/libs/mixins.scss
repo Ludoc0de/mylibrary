@@ -3,7 +3,29 @@
     $align-items: center,
     $justify-content: space-between
     ) {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        display: $display;
+        align-items: $align-items;
+        justify-content: $justify-content;
+}
+
+@mixin sizeAndBorder(
+    $width: 1em,
+    $height: 1em,
+    $border-radius: 0.5em) {
+        width: $width;
+        height: $height;
+        border-radius: $border-radius;
+}
+
+@mixin position(
+    $position: relative,
+    $top: unset,
+    $right: unset,
+    $bottom: unset,
+    $left: unset) {
+        position: $position;
+        top: $top;
+        right: $right;
+        bottom: $bottom;
+        left: $left;
 }
