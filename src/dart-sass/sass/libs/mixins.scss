@@ -29,3 +29,15 @@
         bottom: $bottom;
         left: $left;
 }
+
+//maps with mixin
+
+$breakpoints: (
+    mobile: 650px
+);
+
+@mixin mobile-only {
+    @media screen and (max-width: map-get($breakpoints, mobile)) {
+        @content;
+    }
+}
