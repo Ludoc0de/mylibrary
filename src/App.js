@@ -4,7 +4,8 @@ import Hero from "./Components/Hero"
 import Main from "./Components/Main"
 import Footer from "./Components/Footer"
 // import "./reset.css"
-import "./style.css"
+// import "./style.css"
+import "./dart-sass/style.css"
 export const getBooksNumberContext = createContext();
 
 

@@ -1,0 +1,75 @@
+@mixin flexDefault(
+    $display: flex, 
+    $align-items: center,
+    $justify-content: space-between
+    ) {
+        display: $display;
+        align-items: $align-items;
+        justify-content: $justify-content;
+}
+
+@mixin sizeAndBorder(
+    $width: 1em,
+    $height: 1em,
+    $border-radius: 0.5em) {
+        width: $width;
+        height: $height;
+        border-radius: $border-radius;
+}
+
+@mixin position(
+    $position: relative,
+    $top: unset,
+    $right: unset,
+    $bottom: unset,
+    $left: unset) {
+        position: $position;
+        top: $top;
+        right: $right;
+        bottom: $bottom;
+        left: $left;
+}
+
+@mixin gridArea{
+    .box-1 {
+            grid-area: A;
+    }
+
+    .box-2 {
+        grid-area: B;
+    }
+
+    .box-3 {
+        grid-area: C;
+    }
+
+    .box-4 {
+        grid-area: D;
+    }
+
+    .box-5 {
+        grid-area: E;
+    }
+
+    .box-6 {
+        grid-area: F;
+    }
+}
+
+@mixin gridTemplateArea {
+    grid-template-areas:
+    "A A A A   A A D D   D D D D"
+    "B B B B   B B E E   E E E E"
+    "C C C C   C C F F   F F F F";
+}
+//maps with mixin
+
+$breakpoints: (
+    mobile: 650px
+);
+
+@mixin mobile-only {
+    @media screen and (max-width: map-get($breakpoints, mobile)) {
+        @content;
+    }
+}
