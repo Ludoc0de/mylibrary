@@ -169,6 +169,10 @@ input[type=number] {
     @include position($top: 0.5em, $right: 2.5em);
     transition: opacity 0.7s;
     transition-timing-function: linear;
+    @include mobile-only {
+        top: -2.1em; 
+        left: 8.5em;
+    }
 }
 
 .form__button_del {
