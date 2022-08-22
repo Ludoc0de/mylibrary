@@ -202,8 +202,10 @@ input[type=number] {
     font-size: 4em;
 }
 
-.hero__title>b {
-    color: #5081E8;
+.hero__title> {
+    b {
+        color: $blue-color;
+    }
 }
 
 .hero__text {
@@ -273,7 +275,9 @@ input[type=number] {
     color: $blue-color;
 }
 
-.section__button:hover .svg__path {
-    transition: 0.4s ease;
-    transform: translate(-75px);
+.section__button{
+    &:hover .svg__path {
+        transition: 0.4s ease;
+        transform: translate(-75px);
+    }
 }
