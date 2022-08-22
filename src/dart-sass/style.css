@@ -45,6 +45,11 @@ header, nav {
   align-items: center;
   justify-content: space-between;
 }
+@media screen and (max-width: 650px) {
+  header, nav {
+    flex-direction: column;
+  }
+}
 
 header {
   padding: 1em 0;
@@ -62,6 +67,11 @@ label {
   font-weight: bold;
   margin-left: 4em;
 }
+@media screen and (max-width: 650px) {
+  .nav__link {
+    margin-left: 0em;
+  }
+}
 
 form {
   position: relative;
@@ -69,6 +79,16 @@ form {
   right: unset;
   bottom: unset;
   left: 2em;
+}
+@media screen and (max-width: 650px) {
+  form {
+    flex-direction: column;
+    margin-top: 1em;
+    position: unset;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .form__input {
@@ -90,6 +110,11 @@ form {
   right: unset;
   bottom: unset;
   left: 1em;
+}
+@media screen and (max-width: 650px) {
+  .svg__spin {
+    left: unset;
+  }
 }
 
 .svg__background {
@@ -167,6 +192,12 @@ input[type=number] {
   transition: opacity 0.5s ease-out;
   transition-timing-function: linear;
 }
+@media screen and (max-width: 650px) {
+  .form__button_del {
+    top: 2em;
+    left: -8.5em;
+  }
+}
 
 .form__button_color {
   background-color: transparent;
@@ -180,14 +211,31 @@ input[type=number] {
   justify-content: space-between;
   margin: 4em 0 13em 0;
 }
+@media screen and (max-width: 650px) {
+  .hero {
+    margin: 0;
+    flex-direction: column;
+  }
+}
 
 .hero__image,
 .hero--text__container {
   width: 36em;
 }
+@media screen and (max-width: 650px) {
+  .hero__image,
+.hero--text__container {
+    width: 20em;
+  }
+}
 
 .hero--text__container {
   margin-bottom: 8em;
+}
+@media screen and (max-width: 650px) {
+  .hero--text__container {
+    margin-bottom: 4em;
+  }
 }
 
 .hero__title {
@@ -211,6 +259,11 @@ input[type=number] {
   align-items: center;
   justify-content: space-between;
 }
+@media screen and (max-width: 650px) {
+  .main__container-section {
+    flex-direction: column;
+  }
+}
 
 .main__section {
   display: flex;
@@ -223,6 +276,13 @@ input[type=number] {
   border-radius: 0.5em;
   margin-bottom: 2em;
 }
+@media screen and (max-width: 650px) {
+  .main__section {
+    flex-direction: column;
+    width: 20em;
+    height: 35em;
+  }
+}
 
 .section__img {
   background-color: #5081E8;
@@ -233,6 +293,11 @@ input[type=number] {
 
 .section__info {
   padding-top: 1em;
+}
+@media screen and (max-width: 650px) {
+  .section__info {
+    width: 18em;
+  }
 }
 
 .info__ul {
@@ -245,7 +310,42 @@ input[type=number] {
   justify-items: start;
   row-gap: 0.2em;
 }
+.info__ul > li {
+  width: 7em;
+}
+@media screen and (max-width: 650px) {
+  .info__ul {
+    width: 18em;
+    row-gap: 0.5em;
+    grid-template-areas: "A A A A   A A D D   D D D D" "B B B B   B B E E   E E E E" "C C C C   C C F F   F F F F";
+  }
+}
 
+@media screen and (max-width: 650px) {
+  .box-1 {
+    grid-area: A;
+  }
+
+  .box-2 {
+    grid-area: B;
+  }
+
+  .box-3 {
+    grid-area: C;
+  }
+
+  .box-4 {
+    grid-area: D;
+  }
+
+  .box-5 {
+    grid-area: E;
+  }
+
+  .box-6 {
+    grid-area: F;
+  }
+}
 .section__button {
   position: relative;
   top: unset;
@@ -255,6 +355,11 @@ input[type=number] {
   border: none;
   background: none;
   cursor: pointer;
+}
+@media screen and (max-width: 650px) {
+  .section__button {
+    left: 0em;
+  }
 }
 
 .svg__path {
