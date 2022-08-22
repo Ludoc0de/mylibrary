@@ -2,7 +2,7 @@ import heroImage from "../images/reader.png"
 export default function Hero(){
     return(
         <section className="hero">
-            <img src={heroImage} className="hero__image" />
+            <img src={heroImage} className="hero__image" alt="a man sitting and reading a book"/>
             <div className="hero--text__container">
                 <h2 className="hero__title">
                     <b>Track</b> your library
