@@ -29,14 +29,14 @@ $blue-color: #5081E8;
 $grey-color: #f4f4f4;
 
 body {
-    background-color: var($white-color);
-    color: var($black-color);
+    background-color: $white-color;
+    color: $black-color;
     font-family: 'Roboto', sans-serif;
 }
 
 .container {
     width: calc(100% - 4em);
-    max-width: var($container);
+    max-width: $container;
     margin-left: auto;
     margin-right: auto;
 }
@@ -71,7 +71,7 @@ label {
 
 .nav__link {
     text-decoration: none;
-    color: var($black-color);
+    color: $black-color;
     font-weight: bold;
     margin-left: 4em;
 }
@@ -92,7 +92,7 @@ form {
 }
 
 .form__input_color {
-    background-color: var($grey-color);
+    background-color: $grey-color;
 }
 
 /*spin*/
@@ -103,12 +103,12 @@ form {
 }
 
 .svg__background {
-    stroke: var($grey-color);
+    stroke: $grey-color;
     stroke-width: 3;
 }
 
 .svg__filled {
-    stroke: var($blue-color);
+    stroke: $blue-color;
     stroke-width: 3;
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
@@ -178,7 +178,7 @@ input[type=number] {
 
 .form__button_color {
     background-color: transparent;
-    color: var($grey-color);
+    color: $grey-color;
 }
 
 /*Hero*/
@@ -223,7 +223,7 @@ input[type=number] {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: var($white-color);
+    background-color:$white-color;
     box-shadow: 0.1em 0.1em 1em #2D272C;
     border-radius: 0.5em;
     width: 36em;
@@ -232,7 +232,7 @@ input[type=number] {
 }
 
 .section__img {
-    background-color: var($blue-color);
+    background-color: $blue-color;
     border-radius: 0.5em;
     width: 8em;
     height: 12em;
@@ -270,7 +270,7 @@ input[type=number] {
     bottom: 2.5em;
     left: 1em;
     font-size: medium;
-    color: var($blue-color);
+    color: $blue-color;
 }
 
 .section__button:hover .svg__path {
