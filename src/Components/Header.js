@@ -43,7 +43,7 @@ export default function Header(){
         //update find boolean
         setFind(prevState => true)
         try{
-            const res = await fetch(`http://openlibrary.org/search.json?q=${search.searchBook}`)
+            const res = await fetch(`https://openlibrary.org/search.json?q=${search.searchBook}`)
             const dataBooks = await res.json()
             const data = dataBooks.docs.shift(0)
             if(data){
