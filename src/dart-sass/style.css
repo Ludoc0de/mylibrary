@@ -325,23 +325,18 @@ input[type=number] {
   .box-1 {
     grid-area: A;
   }
-
   .box-2 {
     grid-area: B;
   }
-
   .box-3 {
     grid-area: C;
   }
-
   .box-4 {
     grid-area: D;
   }
-
   .box-5 {
     grid-area: E;
   }
-
   .box-6 {
     grid-area: F;
   }
@@ -379,6 +374,15 @@ input[type=number] {
 .section__button:hover .svg__path {
   transition: 0.4s ease;
   transform: translate(-75px);
+}
+
+/* FOOTER */
+.nav-block {
+  padding: 0 0 1em 0;
+}
+
+.nav-item {
+  list-style: none;
 }
 
 /*# sourceMappingURL=style.css.map */
