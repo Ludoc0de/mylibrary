@@ -40,17 +40,14 @@ label {
 }
 
 /* HEADER */
-header {
+header, nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1em 0;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+header {
+  padding: 1em 0;
 }
 
 .nav__title,
@@ -68,15 +65,17 @@ label {
 
 form {
   position: relative;
+  top: unset;
+  right: unset;
+  bottom: unset;
   left: 2em;
 }
 
 .form__input {
   border: none;
-  border-radius: 1em;
-  height: 2.2em;
   width: 20em;
-  /* padding-left: 1em; */
+  height: 2.2em;
+  border-radius: 1em;
   padding-left: 3em;
 }
 
@@ -88,6 +87,8 @@ form {
 .svg__spin {
   position: relative;
   top: 0.5em;
+  right: unset;
+  bottom: unset;
   left: 1em;
 }
 
@@ -141,13 +142,18 @@ input[type=number] {
 
 .form__button_find {
   position: relative;
+  top: unset;
   right: 5em;
+  bottom: unset;
+  left: unset;
 }
 
 .form__button_add {
   position: relative;
   top: 0.5em;
   right: 2.5em;
+  bottom: unset;
+  left: unset;
   transition: opacity 0.7s;
   transition-timing-function: linear;
 }
@@ -155,8 +161,10 @@ input[type=number] {
 .form__button_del {
   position: relative;
   top: 0.25em;
+  right: unset;
+  bottom: unset;
   left: 2.5em;
-  transition: opacity 0.5s;
+  transition: opacity 0.5s ease-out;
   transition-timing-function: linear;
 }
 
@@ -168,8 +176,8 @@ input[type=number] {
 /*Hero*/
 .hero {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin: 4em 0 13em 0;
 }
 
@@ -198,28 +206,29 @@ input[type=number] {
 
 /*main*/
 .main__container-section {
-  display: flex;
   flex-wrap: wrap;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
 .main__section {
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
   background-color: #fdfdfd;
   box-shadow: 0.1em 0.1em 1em #2D272C;
-  border-radius: 0.5em;
   width: 36em;
   height: 14em;
+  border-radius: 0.5em;
   margin-bottom: 2em;
 }
 
 .section__img {
   background-color: #5081E8;
-  border-radius: 0.5em;
   width: 8em;
   height: 12em;
+  border-radius: 0.5em;
 }
 
 .section__info {
@@ -239,6 +248,9 @@ input[type=number] {
 
 .section__button {
   position: relative;
+  top: unset;
+  right: unset;
+  bottom: unset;
   left: 22em;
   border: none;
   background: none;
@@ -251,6 +263,8 @@ input[type=number] {
 
 .delete__button_text {
   position: relative;
+  top: unset;
+  right: unset;
   bottom: 2.5em;
   left: 1em;
   font-size: medium;
