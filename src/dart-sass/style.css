@@ -244,11 +244,12 @@ input[type=number] {
   }
 }
 
-.hero__title {
+.hero__title, .explain__title {
   font-size: 4em;
+  margin-bottom: 0em;
 }
 
-.hero__title > b {
+.hero__title b, .explain__title > b {
   color: #5081E8;
 }
 
@@ -256,6 +257,11 @@ input[type=number] {
   font-size: 1.3em;
   letter-spacing: 2px;
   text-align: justify;
+}
+
+.cross {
+  position: relative;
+  right: 2em;
 }
 
 /*main*/

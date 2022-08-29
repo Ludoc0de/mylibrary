@@ -215,11 +215,12 @@ input[type=number] {
     }
 }
 
-.hero__title {
+.hero__title, .explain__title {
     font-size: 4em;
+    margin-bottom: 0em;
 }
 
-.hero__title> {
+.hero__title, .explain__title> {
     b {
         color: $blue-color;
     }
@@ -231,6 +232,10 @@ input[type=number] {
     text-align: justify;
 }
 
+.cross {
+    position:relative;
+    right: 2em;
+}
 /*main*/
 .main__container-section {
     flex-wrap: wrap;
