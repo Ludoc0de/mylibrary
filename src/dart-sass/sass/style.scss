@@ -209,7 +209,6 @@ input[type=number] {
 }
 
 .hero--text__container {
-    margin-bottom: 8em;
     @include mobile-only {
         margin-bottom: 4em;
     }
